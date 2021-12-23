@@ -1,10 +1,10 @@
 <template>
-  <section class="about">
+  <section class="user-details">
     <h1 v-if="loading">loading user details...</h1>
     <h1 v-if="!loading && !user">Opsss got some error...</h1>
     <div v-if="user" class="">
       <!-- <user-details-header :user="user" /> -->
-      <user-posts :user="user" />
+      <user-posts :posts="posts" />
     </div>
   </section>
 </template>
@@ -13,9 +13,12 @@
 import {userService} from '@/services/user.service'
 import {postService} from '@/services/post.service'
 
+import UserPosts from '@/components/user-posts'
+
 export default {
   name: 'UserDetails',
   components: {
+    UserPosts
   },
   data() {
     return {
@@ -39,3 +42,8 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.user-details {
+  margin: 20px 0;
+}
+</style>

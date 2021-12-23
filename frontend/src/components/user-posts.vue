@@ -1,29 +1,39 @@
 <template>
-  <ul class="user-feed">
-    <li v-for="post in posts" :key="post._id"><post-card :post="post" /></li>
+  <ul class="user-posts">
+    <li v-for="post in posts" :key="post._id">
+      <post-preview :post="post" />
+    </li>
   </ul>
 </template>
 
 <script>
-import PostCard from '@/components/post-card.vue'
+import PostPreview from '@/components/post-preview.vue'
 
 export default {
-  name: 'UserFeed',
+  name: 'UserPosts',
   components: {
-    PostCard
+    PostPreview
   },
-  computed: {
-    posts() {
-      return this.$store.getters['feedStore/posts']
+  props: {
+    posts: {
+      type: Array,
+      required: true
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.user-feed {
+.user-posts {
+  $box-size: 19rem;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: calc((#{$max-content-width} - (#{$box-size} * 3)) / 2);
+
   li {
-    margin: 10px 0;
+    height: $box-size;
+    width: $box-size;
   }
 }
 </style>

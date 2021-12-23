@@ -1,11 +1,4 @@
-// const user = {
-//   id,
-//   name,
-//   email,
-//   profileImg,
-//   createdAt,
-//   updatedAt
-// }
+
 
 // const userFeed = {
 //   id,
@@ -26,6 +19,10 @@
 // const post = {
 //   id,
 //   userId,
+//   media: {
+//      type: 'image',
+//      src,
+//   },
 //   text,
 //   likes,
 //   comments,
@@ -66,6 +63,18 @@ const numberOfPost = numberOfUsers + 20
 
 
 // model creators
+
+
+/**
+ * @typedef  {Object} User
+ * @property {String} _id
+ * @property {String} name
+ * @property {String} nickname
+ * @property {String} email
+ * @property {String} profileImg
+ * @property {String} createdAt
+ * @property {String} updatedAt
+ */
 function createUser() {
   const {firstName, lastName} = getRndName()
   return {
@@ -79,6 +88,24 @@ function createUser() {
   }
 }
 
+
+/**
+ * @typedef  {Object} Media
+ * @property {String} type - image/ video
+ * @property {String} src
+ */
+
+/**
+ * @typedef  {Object} Post
+ * @property {String} _id
+ * @property {String} userId
+ * @property {Media} madia
+ * @property {String} text
+ * @property {String} likes - sum of the likes
+ * @property {String} comments - sum of the comments
+ * @property {String} createdAt
+ * @property {String} updatedAt
+ */
 function createPost(userId) {
   const post = {
     _id: makeId(10),
@@ -97,6 +124,14 @@ function createPost(userId) {
   return post
 }
 
+/**
+ * @typedef  {Object} UserFeed
+ * @property {String} _id
+ * @property {String} userId
+ * @property {String} postId
+ * @property {String} createdAt
+ * @property {String} updatedAt
+ */
 function createUserFeed(userId, postId) {
   const userFeed = {
     _id: makeId(10),
@@ -109,6 +144,14 @@ function createUserFeed(userId, postId) {
 return userFeed
 }
 
+/**
+ * @typedef  {Object} UserFollow
+ * @property {String} _id
+ * @property {String} userId
+ * @property {String} followId
+ * @property {String} createdAt
+ * @property {String} updatedAt
+ */
 function createUserFollowers(userId, followId) {
   const userFollow = {
     _id: makeId(10),
@@ -121,6 +164,15 @@ function createUserFollowers(userId, followId) {
   return userFollow
 }
 
+/**
+ * @typedef  {Object} PostComment
+ * @property {String} _id
+ * @property {String} postId
+ * @property {String} userId
+ * @property {String} comment
+ * @property {String} createdAt
+ * @property {String} updatedAt
+ */
 function createPostComment(userId, postId) {
   const postComment = {
     _id: makeId(10),
@@ -134,6 +186,14 @@ function createPostComment(userId, postId) {
   return postComment
 }
 
+/**
+ * @typedef  {Object} PostLike
+ * @property {String} _id
+ * @property {String} postId
+ * @property {String} userId
+ * @property {String} createdAt
+ * @property {String} updatedAt
+ */
 function createPostLike(userId, postId) {
   const postLike = {
     _id: makeId(10),

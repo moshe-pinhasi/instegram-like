@@ -1,6 +1,5 @@
 <template>
   <article class="post-card">
-    <!-- {{post}} -->
     <div class="post-header">
       <i class="far fa-user-circle"></i> 
       <router-link :to="`${post.creator.nickname}`">{{post.creator.name}}</router-link>
@@ -68,7 +67,6 @@ export default {
 
   .post-media {
     height: 300px;
-    background-color: $clr-green;
     position: relative;
 
     img {

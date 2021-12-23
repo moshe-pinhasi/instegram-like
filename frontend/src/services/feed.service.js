@@ -5,6 +5,8 @@ export const feedService  = {
   get
 }
 
+
+// GET /feed
 function get(filterBy = {}) {
   const feed = storageService.get('feed')
   const postsMap = arrayToMap(storageService.get('post'))
@@ -37,7 +39,19 @@ function get(filterBy = {}) {
           commentedBy
         }
       })
-  console.log('posts', posts);
-
+  
+  // console.log('posts', posts);
   return Promise.resolve(posts)
+}
+
+// GET /feed/:id/media
+// response :
+// {
+//  has_next: boolean
+// }
+function timeline(filterBy = {}) {
+  const posts = storageService.get('post')
+  const userPosts = posts.filter(post => post.userId === filterBy.userId)
+
+  return Promise.resolve(userPosts)
 }

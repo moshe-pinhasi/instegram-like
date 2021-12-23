@@ -39,6 +39,7 @@ export default {
 
   .app-main-content {
     max-width: $max-content-width;
+    min-width: $max-content-width;
     margin: 0 auto;
   }
 }
