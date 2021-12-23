@@ -5,7 +5,7 @@
       <router-link :to="`${post.creator.nickname}`">{{post.creator.name}}</router-link>
     </div>
     <div class="post-media">
-      <img :src="post.media.src" />
+      <media-image :media="post.media" />
     </div>
     <section class="post-details">
       <div class="post-text">{{post.text}}</div>
@@ -33,7 +33,12 @@
 </template>
 
 <script>
+import MediaImage from "@/components/media-image.vue"
+
 export default {
+  components: {
+    MediaImage
+  },
   props: {
     post: {
       type: Object,
@@ -66,17 +71,17 @@ export default {
 
   .post-media {
     height: 300px;
-    position: relative;
+    // position: relative;
 
-    img {
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      user-select: none;
-      width: 100%;
-      object-fit: cover;
-    }
+    // img {
+    //   height: 100%;
+    //   left: 0;
+    //   position: absolute;
+    //   top: 0;
+    //   user-select: none;
+    //   width: 100%;
+    //   object-fit: cover;
+    // }
   }
 
   .post-actions {
