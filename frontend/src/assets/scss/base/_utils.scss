@@ -1,0 +1,27 @@
+// @import '@/assets/scss/abstracts/variables.scss';
+@import '@/assets/scss/abstracts/_mixins.scss';
+
+.hide-for-phone {
+  @include respond(phone) {
+    display: none;
+  }
+}
+
+.show-in-phone {
+  display: none;
+
+  @include respond(phone) {
+    display: block;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.ellipsis {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
