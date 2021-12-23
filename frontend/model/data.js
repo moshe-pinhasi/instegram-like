@@ -88,7 +88,6 @@ function createUser() {
   }
 }
 
-
 /**
  * @typedef  {Object} Media
  * @property {String} type - image/ video
