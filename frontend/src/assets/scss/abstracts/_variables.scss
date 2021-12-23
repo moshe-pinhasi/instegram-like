@@ -1,15 +1,41 @@
-$clr-pink: #fdcfe8;
-$clr-blue: #aecbfa;
-$clr-yellow: #fff79f;
-$clr-green: #83c694;
+// $clr-pink: #fdcfe8;
+// $clr-blue: #aecbfa;
+// $clr-yellow: #fff79f;
+// $clr-green: #83c694;
 
-$clr-grey-0: rgb(250, 250, 250);
-$clr-grey-1: rgba(219,219,219,1);
-$clr-grey-2: rgb(239, 239, 239);
-$clr-grey-3: #8e8e8e;
 
-$clr-white: #ffffff;
 
+// Colors
+$clr-white:    #fff !default;
+$white-transparent: #ffffffbd;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+// $teal:    #20c997 !default;
+// $indigo:  #6610f2 !default;
+// $purple:  #6f42c1 !default;
+// $pink:    #d63384 !default;
+// $orange:  #fd7e14 !default;
+$blue:    #0d6efd !default;
+$red:     #dc3545 !default;
+$yellow:  #ffc107 !default;
+$green:   #198754 !default;
+$cyan:    #0dcaf0 !default;
+
+$primary:       $blue !default;
+// $secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
 
 $main-font-family: 'Noto Sans', sans-serif;
 

@@ -19,7 +19,6 @@
         <div v-if="post.comments > 1">
           View all {{post.comments}} comments
         </div>
-        <div v-else-if="post.comments === 1">View {{post.comments}} comment</div>
         <div class="post-comment" v-if="post.commentedBy.length > 0">
           <span class="post-comment-creator">{{post.commentedBy[0].creator.name}}</span>
           {{post.commentedBy[0].comment}}
@@ -49,13 +48,13 @@ export default {
   font-size: 1.4rem;
   width: 100%;
   border-radius: 3px;
-  border: 1px solid $clr-grey-1;
+  border: 1px solid $gray-400;
 
   $padding: 1.4rem;
 
   .post-header {
     padding: $padding;
-    border-bottom: 1px solid $clr-grey-2;
+    border-bottom: 1px solid $gray-300;
     display: flex;
     align-items: center;
 
@@ -105,19 +104,21 @@ export default {
   }
 
   .post-comments {
-    color: $clr-grey-3;
+    color: $gray-600;
     padding: 0 0 1rem 0;
   }
 
-  .post-comment-creator {
+  .post-comment {
     color: initial;
-    // font-weight: bold;
+  }
+  .post-comment-creator {
+    font-weight: bold;
   }
 
   .post-created {
     text-transform: uppercase;
     font-size: 1rem;
-    color: $clr-grey-3;
+    color: $gray-600;
   }
 
   .post-add-comment {
@@ -125,7 +126,7 @@ export default {
   }
 
   .post-add-comment {
-    border-top: 1px solid $clr-grey-2
+    border-top: 1px solid $gray-300;
   }
 }
 </style>

@@ -7,11 +7,14 @@ export const feedService  = {
 
 
 // GET /feed
+/**
+ * @param {Object} filterBy 
+ * @returns {Promise<Post[]>}
+ */
 function get(filterBy = {}) {
   const feed = storageService.get('feed')
   const postsMap = arrayToMap(storageService.get('post'))
   
-
   const users = storageService.get('user')
   const usersMap = arrayToMap(users)
 

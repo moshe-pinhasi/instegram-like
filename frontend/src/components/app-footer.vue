@@ -23,7 +23,7 @@ export default {
   z-index: 3;
   height: $footer-nav-height;
   width: 100%;
-  border-top: 1px solid $clr-grey-1;
+  border-top: 1px solid $gray-400;
   background-color: $clr-white;
 
   .app-footer-content {

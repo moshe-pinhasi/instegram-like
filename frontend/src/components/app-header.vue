@@ -28,7 +28,7 @@ export default {
   z-index: 3;
   height: $desktop-nav-height;
   width: 100%;
-  border-bottom: 1px solid $clr-grey-1;
+  border-bottom: 1px solid $gray-400;
   background-color: $clr-white;
 
   .app-header-content {
