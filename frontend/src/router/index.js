@@ -24,8 +24,16 @@ const routes = [
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "user-details" */ '../views/feed/user-details.vue')
       },
-    ]
+    ],
   },
+  {
+    path: '/whiteboard',
+    name: 'whiteboard',
+    // route level code-splitting
+    // this generates a separate chunk (whiteboard.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "whiteboard" */ '../views/whiteboard.vue')
+  }
 ]
 
 const router = new VueRouter({

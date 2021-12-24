@@ -2,8 +2,8 @@
   <section class="user-details">
     <h1 v-if="loading">loading user details...</h1>
     <h1 v-if="!loading && !user">Opsss got some error...</h1>
-    <div v-if="user" class="">
-      <!-- <user-details-header :user="user" /> -->
+    <div v-if="user" class="user-details-content">
+      <user-info-header :user="user" />
       <user-posts :posts="posts" />
     </div>
   </section>
@@ -11,14 +11,17 @@
 
 <script>
 import {userService} from '@/services/user.service'
-import {postService} from '@/services/post.service'
+import {feedService} from '@/services/feed.service'
+import {alertService} from '@/services/alert.service'
 
 import UserPosts from '@/components/user-posts'
+import UserInfoHeader from '@/components/user-info-header'
 
 export default {
   name: 'UserDetails',
   components: {
-    UserPosts
+    UserPosts,
+    UserInfoHeader,
   },
   data() {
     return {
@@ -31,11 +34,11 @@ export default {
     try {
       this.loading = true
       const nickname = this.$route.params.id
-      console.log('nickname', nickname);
-      this.user = await userService.get({nickname})
-      this.posts = await postService.get({userId: this.user._id})
+      const user = await userService.get({nickname})
+      this.user = await feedService.getUserInfo(user._id)
+      this.posts = await feedService.getUserMedia(this.user._id)
     } catch (e) {
-      console.error(e);
+      alertService.error('Could not load user. Please try again later', e);
     } finally {
       this.loading = false
     }
@@ -45,5 +48,11 @@ export default {
 <style lang="scss" scoped>
 .user-details {
   margin: 20px 0;
+
+  .user-details-content {
+    > :first-child {
+      margin: 0 0 4rem 0;
+    }
+  }
 }
 </style>

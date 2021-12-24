@@ -24,7 +24,7 @@ export default {
   height: $footer-nav-height;
   width: 100%;
   border-top: 1px solid $gray-400;
-  background-color: $clr-white;
+  background-color: $white;
 
   .app-footer-content {
     width: 100%;

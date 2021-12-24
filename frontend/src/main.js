@@ -1,3 +1,6 @@
+import './services/logger.service'
+import './services/error.handler'
+
 import Vue from 'vue'
 import App from './App.vue'
 import './registerServiceWorker'

@@ -29,7 +29,7 @@ export default {
   height: $desktop-nav-height;
   width: 100%;
   border-bottom: 1px solid $gray-400;
-  background-color: $clr-white;
+  background-color: $white;
 
   .app-header-content {
     width: 100%;

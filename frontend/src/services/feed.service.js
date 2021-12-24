@@ -2,7 +2,9 @@ import {storageService} from './storage.service'
 import {arrayToMap} from './util.service'
 
 export const feedService  = {
-  get
+  get,
+  getUserInfo,
+  getUserMedia
 }
 
 
@@ -47,14 +49,34 @@ function get(filterBy = {}) {
   return Promise.resolve(posts)
 }
 
-// GET /feed/:id/media
+// GET /feed/user/:id/info
+function getUserInfo(userId) {
+  const users = storageService.get('user')
+  const user = users.filter(user => user._id === userId).pop()
+
+  if (!user) return Promise.reject('User not found!')
+
+  const posts = storageService.get('post')
+  const userFollow = storageService.get('userFollow')
+
+  const res = {
+    ...user,
+    following: userFollow.filter(uf => uf.userId === userId).length, // number of the users the userId follow
+    followers: userFollow.filter(uf => uf.followId === userId).length, // number of the users whose follow userId
+    totalPosts: posts.filter(p => p.userId === userId).length
+  }
+  return Promise.resolve(res)
+}
+
+// GET /feed/:id/media?page=1
 // response :
 // {
+//  posts: []
 //  has_next: boolean
 // }
-function timeline(filterBy = {}) {
+function getUserMedia(userId, page) {
   const posts = storageService.get('post')
-  const userPosts = posts.filter(post => post.userId === filterBy.userId)
+  const userPosts = posts.filter(post => post.userId === userId)
 
   return Promise.resolve(userPosts)
 }
