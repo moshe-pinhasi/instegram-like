@@ -1,10 +1,3 @@
-// $clr-pink: #fdcfe8;
-// $clr-blue: #aecbfa;
-// $clr-yellow: #fff79f;
-// $clr-green: #83c694;
-
-
-
 // Colors
 $white:    #ffffff !default;
 $white-transparent: #ffffffbd;
@@ -23,6 +16,9 @@ $black:    #000000 !default;
 // $indigo:  #6610f2 !default;
 // $purple:  #6f42c1 !default;
 // $pink:    #d63384 !default;
+// $yellow:  #ffc107 !default;
+// $cyan:    #5cbbf6 !default;
+
 $orange-primary:  #E6A23C !default;
 $orange-light-100:  #fdf6ec !default;
 $orange-light-200:  #f5dab1 !default;
@@ -48,10 +44,7 @@ $green-light-200:  #c2e7b0 !default;
 $green-light-300:  #85ce61 !default;
 
 
-
-$yellow:  #ffc107 !default;
-$cyan:    #5cbbf6 !default;
-
+// main colors:
 $primary:             $blue-primary !default;
 $primary-light-100:   $blue-light-100 !default;
 $primary-light-200:   $blue-light-200 !default;
