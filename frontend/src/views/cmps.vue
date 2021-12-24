@@ -10,6 +10,14 @@
 
     <hr /> -->
 
+    <section>
+      <h1>App checkbox</h1>
+      <div class="row">
+        
+      </div>
+    </section>
+
+    <hr />
 
     <section>
       <h1>Btns </h1>
@@ -257,6 +265,17 @@
     <hr />
 
     <section>
+      <h1>App radio</h1>
+      <div class="row">
+        <AppRadio label="1" v-model="radioOption">Option 1</AppRadio>
+        <AppRadio label="2" v-model="radioOption">Option 2</AppRadio>
+        <AppRadio label="3" v-model="radioOption" :disabled="true">Disabled</AppRadio>
+      </div>
+    </section>
+
+    <hr />
+
+    <section>
       <h1>App Alert</h1>
       <div class="row">
         <div class="col-12">
@@ -376,18 +395,22 @@ import AppBadge from '@/components/form/app-badge.vue'
 import AppLoader from '@/components/form/app-loader.vue'
 import AppAlert from '@/components/form/app-alert.vue'
 import AppInput from '@/components/form/app-input.vue'
+import AppRadio from '@/components/form/app-radio.vue'
+
 export default {
   components: {
     AppToggle,
     AppBadge,
     AppLoader,
     AppAlert,
-    AppInput
+    AppInput,
+    AppRadio
   },
   data() {
     return {
       toggleOn: false,
-      inputModel: ""
+      inputModel: "",
+      radioOption: "1"
     }
   }
 }
