@@ -78,39 +78,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.app-input {
-  height: calc(#{$input-height} + 1.5rem);
 
-  .input-row {
-    position: relative;
-    display: flex;
-  }
-
-  .prefix,
-  .suffix {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.8rem;
-  }
-
-  .prefix {
-    left: 1.5rem;
-  }
-
-  .suffix {
-    right: 1.5rem;
-  }
-
-  &.has-prefix .input {
-    padding-left: 4rem;
-  }
-
-  &.has-suffix .input {
-    padding-right: 4rem;
-  }
-}
 </style>
