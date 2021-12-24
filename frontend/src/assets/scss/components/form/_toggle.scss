@@ -13,8 +13,8 @@
     margin: 0;
     display: inline-block;
     position: relative;
-    width: 4rem;
-    height: 2rem;
+    width: 3.3rem;
+    height: 1.7rem;
     border: 1px solid $gray-500;
     outline: none;
     border-radius: 1rem;
@@ -31,8 +31,8 @@
       left: .1rem;
       border-radius: 100%;
       transition: all .3s;
-      width: 1.6rem;
-      height: 1.6rem;
+      width: 1.3rem;
+      height: 1.3rem;
       background-color: $white;
     }
   }
@@ -44,7 +44,7 @@
 
       &:after {
         left: 100%;
-        margin-left: -1.7rem;
+        margin-left: -1.4rem;
       }
     }
   }

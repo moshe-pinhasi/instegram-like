@@ -1,5 +1,5 @@
 <template>
-  <div role="switch" aria-checked="true" class="app-toggle" :class="{'is-checked': input}">
+  <div role="toggle" aria-checked="true" class="app-toggle" :class="{'is-checked': input}">
     <input type="checkbox" name="" true-value="true" class="app-toggle-input">
     <span class="app-toggle-core" @click="onClick" :class="{'is-disabled': disabled}"></span>
   </div>
