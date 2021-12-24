@@ -15,9 +15,9 @@
   font-weight: 500;
 
   // default size
-  padding: 10px 20px;
-  font-size: 14px;
-  border-radius: 4px;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  border-radius: .4rem;
 
   &:hover {
     color: $primary;
@@ -38,27 +38,27 @@
 }
 
 .btn-mini {
-  padding: 7px 15px;
-  font-size: 12px;
-  border-radius: 3px;
+  padding: .7rem 1.5rem;
+  font-size: 1.2rem;
+  border-radius: .3rem;
 }
 
 .btn-sm {
-  padding: 9px 15px;
-  font-size: 12px;
-  border-radius: 3px;
+  padding: .9rem 1.5rem;
+  font-size: 1.2rem;
+  border-radius: .3rem;
 }
 
 .btn-md {
-  padding: 10px 20px;
-  font-size: 14px;
-  border-radius: 4px;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  border-radius: .4rem;
 }
 
 .btn-lg {
-  padding: 12px 20px;
-  font-size: 14px;
-  border-radius: 4px;
+  padding: 1.2rem 2rem;
+  font-size: 1.4rem;
+  border-radius: .4rem;
 }
 
 
@@ -160,12 +160,12 @@
 
 // rounded btns
 .btn-rounded {
-  border-radius: 20px;
-  padding: 12px 23px;
+  border-radius: 2rem;
+  padding: 1.2rem 2.3rem;
 }
 
 // circle btns
 .btn-circle {
   border-radius: 50%;
-  padding: 12px;
+  padding: 1.2rem;
 }
