@@ -1,0 +1,58 @@
+.app-toggle {
+  display: inline-block;
+  
+  .app-toggle-input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin: 0;
+  }
+
+  .app-toggle-core {
+    margin: 0;
+    display: inline-block;
+    position: relative;
+    width: 4rem;
+    height: 2rem;
+    border: 1px solid $gray-500;
+    outline: none;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    background: $gray-500;
+    cursor: pointer;
+    transition: border-color .3s,background-color .3s;
+    vertical-align: middle;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: .1rem;
+      left: .1rem;
+      border-radius: 100%;
+      transition: all .3s;
+      width: 1.6rem;
+      height: 1.6rem;
+      background-color: $white;
+    }
+  }
+
+  &.is-checked {
+    .app-toggle-core {
+      border-color: $primary;
+      background-color: $primary;
+
+      &:after {
+        left: 100%;
+        margin-left: -1.7rem;
+      }
+    }
+  }
+
+  .is-disabled {
+    &.app-toggle-core {
+      opacity: .6;
+      cursor: default;
+    }
+  }
+}

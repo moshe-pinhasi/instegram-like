@@ -1,0 +1,27 @@
+$columns: 12;
+$spacer: 1.2rem;
+
+@mixin make-col($size, $columns) {
+  width: 100%;
+  flex: 0 0 percentage($size / $columns);
+  max-width: percentage($size / $columns);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+}
+
+// columns
+@for $i from 1 through $columns {
+  .col-#{$i} {
+      @include make-col($i, $columns);
+  }
+
+  .col-mb-#{$i} {
+    @include respond(tab-port) { // width < 900?
+        @include make-col($i, $columns);
+    }
+  }
+}

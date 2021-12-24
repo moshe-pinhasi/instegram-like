@@ -1,8 +1,10 @@
 <template>
   <div class="btns">
 
+    <h3>btn default</h3>
+
     <div class="row">
-      <h3>btn default</h3>
+      <h4>btn default</h4>
       <button class="btn btn-sm">normal sm</button>
       <button class="btn btn-primary">primary md (default)</button>
       <button class="btn btn-lg btn-success">success lg</button>
@@ -14,7 +16,7 @@
     <hr />
 
     <div class="row">
-      <h3>btn outlined</h3>
+      <h4>btn outlined</h4>
       <button class="btn btn-outlined">default</button>
       <button class="btn btn-outlined btn-primary">primary</button>
       <button class="btn btn-outlined btn-success">success</button>
@@ -25,7 +27,7 @@
     <hr />
 
     <div class="row">
-      <h3>btn rounded</h3>
+      <h4>btn rounded</h4>
       <button class="btn btn-rounded">default</button>
       <button class="btn btn-rounded btn-primary">primary</button>
       <button class="btn btn-rounded btn-success">success</button>
@@ -36,7 +38,7 @@
     <hr />
 
     <div class="row">
-      <h3>btn circle</h3>
+      <h4>btn circle</h4>
       <button class="btn btn-circle">+</button>
       <button class="btn btn-circle btn-primary">+</button>
       <button class="btn btn-circle btn-success">+</button>
@@ -47,7 +49,7 @@
     <hr />
 
     <div class="row">
-      <h3>btn disabled</h3>
+      <h4>btn disabled</h4>
       <button class="btn btn-disabled">default</button>
       <button class="btn btn-disabled btn-primary">primary</button>
       <button class="btn btn-disabled btn-success">success</button>
@@ -58,7 +60,7 @@
     <hr />
 
     <div class="row">
-      <h3>btn size</h3>
+      <h4>btn size</h4>
       <button class="btn btn-primary btn-mini">mini</button>
       <button class="btn btn-primary btn-sm">small</button>
       <button class="btn btn-primary">default (medium)</button>

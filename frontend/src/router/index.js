@@ -49,6 +49,14 @@ const routes = [
     // this generates a separate chunk (inputs.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "inputs" */ '../views/inputs.vue')
+  },
+  {
+    path: '/cmps',
+    name: 'cmps',
+    // route level code-splitting
+    // this generates a separate chunk (cmps.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "cmps" */ '../views/cmps.vue')
   }
 ]
 

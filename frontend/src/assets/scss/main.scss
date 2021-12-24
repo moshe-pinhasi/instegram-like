@@ -4,12 +4,18 @@
 @import 'abstracts/typography';
 // @import 'abstracts/functions';
 
+// base
 @import 'base/base';
+@import 'base/layout';
 @import 'base/utils';
+@import 'base/animations';
 
-// form
-@import 'components/form/input';
-
+// cmps
+@import 'components/badge';
+@import 'components/loader';
 @import 'components/btns';
 @import 'components/alert';
 
+// form
+@import 'components/form/input';
+@import 'components/form/toggle';
