@@ -11,6 +11,32 @@
     <hr /> -->
 
     <section>
+      <h1>App Card</h1>
+      <div class="row">
+
+        <div class="row">
+          <div class="col-12">
+            <button type="button" class="" @click="toggleCardShadow">
+               {{cardShadow ? 'Hide Shadow' : 'Show Shadow'}}
+            </button>
+          </div>
+        </div>
+        <div class="col-12">
+          <AppCard :has-shadow="cardShadow">
+            <div slot="header" class="">
+              Card name
+            </div>
+            <div v-for="o in [1,2,3,4]" :key="o" class="text item">
+              {{'List item ' + o }}
+            </div>
+          </AppCard>
+        </div>        
+      </div>
+    </section>
+
+    <hr />
+
+    <section>
       <h1>Btns </h1>
       <div class="outer-row">
         <div class="col-12">
@@ -403,6 +429,7 @@ import AppAlert from '@/components/form/app-alert.vue'
 import AppInput from '@/components/form/app-input.vue'
 import AppRadio from '@/components/form/app-radio.vue'
 import AppCheckbox from '@/components/form/app-checkbox.vue'
+import AppCard from '@/components/form/app-card.vue'
 
 export default {
   components: {
@@ -412,19 +439,21 @@ export default {
     AppAlert,
     AppInput,
     AppRadio,
-    AppCheckbox
+    AppCheckbox,
+    AppCard
   },
   data() {
     return {
       toggleOn: false,
       inputModel: "",
       radioOption: "1",
-      checkboxModel: []
+      checkboxModel: [],
+      cardShadow: false
     }
   },
-  watch: {
-    checkboxModel() {
-      console.log('checkboxModel', this.checkboxModel);
+  methods: {
+    toggleCardShadow() {
+      this.cardShadow = !this.cardShadow
     }
   }
 }
