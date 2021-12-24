@@ -27,6 +27,7 @@
 
 <script>
 export default {
+  name: "AppRadio",
   props: {
     label: {
       type: Number | String,

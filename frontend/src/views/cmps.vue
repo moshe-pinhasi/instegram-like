@@ -1,5 +1,5 @@
 <template>
-  <div class="toggles">
+  <div class="cmps-page">
     
     <!-- <section>
       <h1>App </h1>
@@ -9,15 +9,6 @@
     </section>
 
     <hr /> -->
-
-    <section>
-      <h1>App checkbox</h1>
-      <div class="row">
-        
-      </div>
-    </section>
-
-    <hr />
 
     <section>
       <h1>Btns </h1>
@@ -265,6 +256,21 @@
     <hr />
 
     <section>
+      <h1>App checkbox</h1>
+      <div class="row">
+        <AppCheckbox v-model="checkboxModel" label="red">Red </AppCheckbox>
+        <AppCheckbox v-model="checkboxModel" label="green">Green </AppCheckbox>
+        <AppCheckbox v-model="checkboxModel" label="yellow">Yellow </AppCheckbox>
+        <AppCheckbox v-model="checkboxModel" :disabled="true" label="orange">Orange </AppCheckbox>
+      </div>
+      <div class="row">
+        Checked: {{checkboxModel}}
+      </div>
+    </section>
+
+    <hr />
+
+    <section>
       <h1>App radio</h1>
       <div class="row">
         <AppRadio label="1" v-model="radioOption">Option 1</AppRadio>
@@ -275,6 +281,32 @@
 
     <hr />
 
+    <section>
+      <h1>App Toggle</h1>
+      <div class="row">
+        <div class="col-4">
+          <h4>toggle default</h4>
+          <AppToggle />  
+        </div>
+
+        <div class="col-8">
+          <div class="row">
+            <div class="col-6">
+              <h4>toggle disabled</h4>
+              <AppToggle :disabled="true"/>
+            </div>
+
+            <div class="col-6">
+              <h4>toggle disabled</h4>
+              <AppToggle v-model="toggleOn" :disabled="true"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+    
     <section>
       <h1>App Alert</h1>
       <div class="row">
@@ -341,32 +373,6 @@
     </section>
 
     <hr />
-
-    <section>
-      <h1>App Toggle</h1>
-      <div class="row">
-        <div class="col-4">
-          <h4>toggle default</h4>
-          <AppToggle />  
-        </div>
-
-        <div class="col-8">
-          <div class="row">
-            <div class="col-6">
-              <h4>toggle disabled</h4>
-              <AppToggle :disabled="true"/>
-            </div>
-
-            <div class="col-6">
-              <h4>toggle disabled</h4>
-              <AppToggle v-model="toggleOn" :disabled="true"/>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <hr />
     
     <section>
       <h1>App Badge</h1>
@@ -396,6 +402,7 @@ import AppLoader from '@/components/form/app-loader.vue'
 import AppAlert from '@/components/form/app-alert.vue'
 import AppInput from '@/components/form/app-input.vue'
 import AppRadio from '@/components/form/app-radio.vue'
+import AppCheckbox from '@/components/form/app-checkbox.vue'
 
 export default {
   components: {
@@ -404,19 +411,26 @@ export default {
     AppLoader,
     AppAlert,
     AppInput,
-    AppRadio
+    AppRadio,
+    AppCheckbox
   },
   data() {
     return {
       toggleOn: false,
       inputModel: "",
-      radioOption: "1"
+      radioOption: "1",
+      checkboxModel: []
+    }
+  },
+  watch: {
+    checkboxModel() {
+      console.log('checkboxModel', this.checkboxModel);
     }
   }
 }
 </script>
 <style lang="scss" scoped>
-.toggles {
+.cmps-page {
 
   section {
     margin: 20px 0;
