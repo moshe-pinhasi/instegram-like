@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import {alertService} from '@/services/alert.service'
 
 window.onerror = function (error) {
   console.log('************ WINDOW ERROR HANDLER **************')
@@ -24,8 +23,7 @@ Vue.config.errorHandler = (err, vm, info) => {
   console.log('*********************************************')
 
   try {
-    alertService.error('Something went wrong. Please try again later', err);
-    // logError({err: err.message, stack: JSON.stringify(err.stack), tag: vm.$vnode.tag, info})
+    logError({err: err.message, stack: JSON.stringify(err.stack), tag: vm.$vnode.tag, info})
   } catch(err) {
     console.error(err) // we can save in localstorage and send it later again
   }

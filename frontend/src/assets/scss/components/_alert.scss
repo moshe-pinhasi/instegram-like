@@ -1,47 +1,46 @@
-.alert-container {
-    position: fixed;
-    left: 20px;
-    bottom: 20px;
-    .alert {
-        font-size: 1.4rem;
-        opacity: 0;
-        margin: .5rem 0;
-        min-height: 6re,;
-        min-width: 30rem;
-        color: $gray-400;
-        border-radius: 4px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.3rem;
-        p {
-            margin: 0 .5rem;
-        }
-        animation: alertEnter 0.5s, alertLeave 0.5s 2.5s;
-        animation-fill-mode: forwards;
-    }
-    .success {
-        background-color: $success;
-    }
-    .error {
-        background-color: $danger;
-    }
+@mixin create-alert($color, $color-light) {
+	&.is-dark {
+		background-color: $color;
+		color: $white;
+	}
+
+	&.is-light {
+		background-color: $color-light;
+		color: $color;
+	}
 }
 
-@keyframes alertEnter {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
+.app-alert {
+	width: 100%;
+	padding: 8px 16px;
+	margin: 0;
+	box-sizing: border-box;
+	border-radius: 4px;
+	position: relative;
+	background-color: $white;
+	overflow: hidden;
+	opacity: 1;
+	display: flex;
+	align-items: center;
+	transition: opacity .2s;
 
-@keyframes alertLeave {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
+	+ .app-alert {
+		margin-top: 10px;
+	}
+
+	&.alert-info {
+		@include create-alert($info, $info-light-100)
+	}
+
+	&.alert-success {
+		@include create-alert($success, $success-light-100)
+	}
+
+	&.alert-danger {
+		@include create-alert($danger, $danger-light-100)
+	}
+
+	&.alert-warning {
+		@include create-alert($warning, $warning-light-100)
+	}
 }

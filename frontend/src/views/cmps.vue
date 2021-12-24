@@ -2,8 +2,54 @@
   <div class="toggles">
     
     <section>
-      <h3>App Loader</h3>
+      <h3>App Alert</h3>
+      <div class="row">
+        <div class="col-12">
+          <AppAlert type="success">Some error occure while...</AppAlert>  
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <AppAlert type="danger">Some error occure while...</AppAlert>  
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <AppAlert type="info">Some error occure while...</AppAlert>  
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <AppAlert type="warning">Some error occure while...</AppAlert>  
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col-12">
+          <AppAlert type="success" :is-light="true">Some error occure while...</AppAlert>  
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <AppAlert type="danger" :is-light="true">Some error occure while...</AppAlert>  
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <AppAlert type="info" :is-light="true">Some error occure while...</AppAlert>  
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <AppAlert type="warning" :is-light="true">Some error occure while...</AppAlert>  
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section>
+      <h3>App Loader</h3>
       <div class="row">
         <div class="loader-box col-6">
           <h4>loader default</h4>
@@ -69,12 +115,14 @@
 import AppToggle from '@/components/form/app-toggle.vue'
 import AppBadge from '@/components/form/app-badge.vue'
 import AppLoader from '@/components/form/app-loader.vue'
+import AppAlert from '@/components/form/app-alert.vue'
 
 export default {
   components: {
     AppToggle,
     AppBadge,
-    AppLoader
+    AppLoader,
+    AppAlert
   },
   data() {
     return {
@@ -98,6 +146,10 @@ export default {
     position: relative;
     height: 200px;
     width: 200px;
+  }
+
+  .row {
+    margin-bottom: 10px;
   }
 }
 </style>

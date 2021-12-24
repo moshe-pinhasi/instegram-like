@@ -16,14 +16,14 @@ const routes = [
         name: 'feed-index',
         component: FeedIndex,
       },
-      // {
-      //   path: ':id',
-      //   name: 'user-details',
-      //   // route level code-splitting
-      //   // this generates a separate chunk (user-details.[hash].js) for this route
-      //   // which is lazy-loaded when the route is visited.
-      //   component: () => import(/* webpackChunkName: "user-details" */ '../views/feed/user-details.vue')
-      // },
+      {
+        path: ':id',
+        name: 'user-details',
+        // route level code-splitting
+        // this generates a separate chunk (user-details.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "user-details" */ '../views/feed/user-details.vue')
+      },
     ],
   },
   {

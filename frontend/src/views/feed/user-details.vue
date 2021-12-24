@@ -12,7 +12,6 @@
 <script>
 import {userService} from '@/services/user.service'
 import {feedService} from '@/services/feed.service'
-import {alertService} from '@/services/alert.service'
 
 import UserPosts from '@/components/user-posts'
 import UserInfoHeader from '@/components/user-info-header'
@@ -38,7 +37,7 @@ export default {
       this.user = await feedService.getUserInfo(user._id)
       this.posts = await feedService.getUserMedia(this.user._id)
     } catch (e) {
-      alertService.error('Could not load user. Please try again later', e);
+      logError('Could not load user. Please try again later', e);
     } finally {
       this.loading = false
     }
