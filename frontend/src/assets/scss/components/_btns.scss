@@ -1,146 +1,171 @@
 .btn {
-  border: none;
-  align-items: center;
-  border-radius: 4px;
-  display: inline-flex;
-  flex: 0 0 auto;
-  font-weight: 500;
-  letter-spacing: .04em;
-  justify-content: center;
-  outline: 0;
-  position: relative;
-  text-decoration: none;
-  text-indent: 0.04em;
-  // text-transform: uppercase;
-  transition-duration: .28s;
-  transition-property: box-shadow,transform,opacity;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
-  user-select: none;
-  vertical-align: middle;
+  display: inline-block;
+  line-height: 1;
   white-space: nowrap;
   cursor: pointer;
-  background-color: $gray-200;
-  color: inherit;
-  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)!important;
+  background: $white;
+  border: 1px solid $gray-500;
+  color: $gray-800;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: .1s;
+  font-weight: 500;
 
-  // default md size
-  height: 3.6rem;
-  min-width: 6.4rem;
-  padding: 0 1.6rem;
-
-  &:before {
-    background-color: currentColor;
-    border-radius: inherit;
-    bottom: 0;
-    color: inherit;
-    content: "";
-    left: 0;
-    opacity: 0;
-    pointer-events: none;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: opacity .2s cubic-bezier(.4,0,.6,1);
-  }
+  // 
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 4px;
 
   &:hover {
-    &:before {
-      opacity: .08;
+    color: $primary;
+    border-color: $blue-light-200;
+    background-color: $blue-light-100;
+  }
+
+  &.btn-disabled {
+    opacity: 0.7;
+    cursor: default;
+
+    &:hover {
+      background-color: $white;
+      border-color: $gray-500;
+      color: $gray-800;
     }
   }
 }
 
+.btn-mini {
+  padding: 7px 15px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
 .btn-sm {
-  height: 2.8rem;
-  min-width: 5rem;
-  padding: 0 1.2rem;
+  padding: 9px 15px;
+  font-size: 12px;
+  border-radius: 3px;
 }
 
 .btn-md {
-  height: 3.6rem;
-  min-width: 6.4rem;
-  padding: 0 1.6rem;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 4px;
 }
 
 .btn-lg {
-  height: 4.4rem;
-  min-width: 7.8rem;
-  padding: 0 1.9rem;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 4px;
 }
 
-.btn-primary {
-  background-color: $primary;
+
+@mixin create-default-btn($color, $color-light) {
+  background-color: $color;
+  border-color: $color;
   color: $white;
+
+  &:hover {
+    color: $white;
+    border-color: $color-light;
+    background-color: $color-light;
+  }
+
+  &.btn-disabled {
+    opacity: 0.7;
+    cursor: default;
+
+    &:hover {
+      background-color: $color;
+      border-color: $color;
+      color: $white;
+    }
+  }
 }
 
-// .btn-secondary {
-//   background-color: $secondary;
-//   color: $white;
-// }
+@mixin create-btn-outlined($color, $color-light-100, $color-light-300) {
+  color: $color;
+  background: $color-light-100;
+  border-color: $color-light-300;
+
+  &:hover {
+    background: $color;
+    border-color: $color;
+    color: $white;
+  }
+
+  &.btn-disabled {
+    opacity: 0.7;
+    cursor: default;
+
+    &:hover {
+      color: $color;
+      background: $color-light-100;
+      border-color: $color-light-300;
+    }
+  }
+}
+
+// defaults btns
+.btn-primary {
+  @include create-default-btn($primary, $primary-light-400);
+}
 
 .btn-success {
-  background-color: $success;
-  color: $white;
+  @include create-default-btn($success, $success-light-300);
 }
 
 .btn-danger {
-  background-color: $danger;
-  color: $white;
+  @include create-default-btn($danger, $danger-light-300);
 }
 
-.btn-outline {
-  background-color: transparent;
-  border: thin solid $gray-500;
+.btn-warning {
+  @include create-default-btn($warning, $warning-light-300);
+}
 
-  &.btn-primary {
+.btn-info {
+  @include create-default-btn($info, $info-light-300);
+}
+
+// outline btns
+.btn-outlined {
+  &:hover {
+    background-color: $white;
+    border-color: $primary;
     color: $primary;
-    border-color: currentColor;
   }
 
-  // &.btn-secondary {
-  //   color: $secondary;
-  //   border-color: currentColor;
-  // }
+  &.btn-primary {
+    @include create-btn-outlined($primary, $primary-light-100, $primary-light-200);
+  }
 
   &.btn-success {
-    color: $success;
-    border-color: currentColor;
+    @include create-btn-outlined($success, $success-light-100, $success-light-200);
   }
 
   &.btn-danger {
-    color: $danger;
-    border-color: currentColor;
+    @include create-btn-outlined($danger, $danger-light-100, $danger-light-200);
+  }
+
+  &.btn-warning {
+    @include create-btn-outlined($warning, $warning-light-100, $warning-light-200);
+  }
+
+  &.btn-info {
+    @include create-btn-outlined($info, $info-light-100, $info-light-200);
   }
 }
 
-.btn-round {
+// rounded btns
+.btn-rounded {
+  border-radius: 20px;
+  padding: 12px 23px;
+}
+
+// circle btns
+.btn-circle {
   border-radius: 50%;
-  min-width: 3.6rem;
-
-  &.btn-sm {
-    min-width: 2.8rem;
-  }
-
-  &.btn-md {
-    min-width: 3.6rem;
-  }
-
-  &.btn-lg {
-    min-width: 4.4rem;
-  }
-}
-
-.btn-disabled {
-  background-color: rgba(0,0,0,.12)!important;
-  color: rgba(0,0,0,.26)!important;
-  cursor: default !important;
-  
-  &.btn-outline {
-    color: rgba(0,0,0,.26)!important;
-    background-color: transparent !important;
-  }
-}
-
-.btn-flat {
-  box-shadow: none!important;
+  padding: 12px;
 }
