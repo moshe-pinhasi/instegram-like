@@ -11,6 +11,25 @@
     <hr /> -->
 
     <section>
+      <h1>App Messages</h1>
+      <div class="row">
+        <div class="col-6">
+          <button type="button" class="" @click="showMessages('success')">
+            Show Success Message
+          </button>
+        </div>
+
+        <div class="col-6">
+          <button type="button" class="" @click="showMessages('error')">
+            Show Error Message
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section>
       <h1>App Card</h1>
       <div class="row">
 
@@ -431,6 +450,8 @@ import AppRadio from '@/components/form/app-radio.vue'
 import AppCheckbox from '@/components/form/app-checkbox.vue'
 import AppCard from '@/components/form/app-card.vue'
 
+import {alertService} from '@/services/alert.service'
+
 export default {
   components: {
     AppToggle,
@@ -448,18 +469,46 @@ export default {
       inputModel: "",
       radioOption: "1",
       checkboxModel: [],
-      cardShadow: false
+      cardShadow: false,
+      alertCount: 0
     }
+  },
+  created() {
+
   },
   methods: {
     toggleCardShadow() {
       this.cardShadow = !this.cardShadow
+    },
+    showMessages(type) {
+      this.alertCount++
+      if (type === 'success') {
+        alertService.success(`Example of success message #${this.alertCount}`)
+      }
+
+      if (type === 'error') {
+        alertService.error(`Example of error message #${this.alertCount}`, new Error('example for error'))
+      }
+
+      // alertService.success('some text here 1')
+      // setTimeout( () => {
+      //   alertService.error('some error 2', new Error('ddqw'))
+      // }, 2000)
+
+      // setTimeout( () => {
+      //   alertService.success('some text here 3')
+      // }, 3000)
+
+      // setTimeout( () => {
+      //   alertService.success('some text here 4')
+      // }, 4000)
     }
   }
 }
 </script>
 <style lang="scss" scoped>
 .cmps-page {
+  font-size: 1.4rem;
 
   section {
     margin: 20px 0;

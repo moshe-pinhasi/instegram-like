@@ -1,6 +1,13 @@
 <template>
   <div class="app-alert" :class="[`alert-${type}`, isLight ? 'is-light' : 'is-dark']">
-    <slot />
+    <div class="alert-content">
+      <slot />
+    </div>
+    <button v-if="showClose" 
+            class="has-close-btn"
+            @click="$emit('close')">
+      x
+    </button>
   </div>
 </template>
 
@@ -14,6 +21,10 @@ export default {
     isLight: {
       type: Boolean,
       default: false
+    },
+    showClose: {
+      type: Boolean,
+      default: true
     }
   }
 }

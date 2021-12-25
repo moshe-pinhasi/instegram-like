@@ -1,0 +1,15 @@
+.app-message {
+	min-width: 380px;
+	position: fixed;
+	left: 20px;
+	bottom: -20px;
+	z-index: 99999;
+	opacity: 0;
+	transform: translateY(200%);
+	transition: opacity .4s, bottom .3s;
+	margin-top: 5px;
+}
+
+.app-message-fade-enter {
+	opacity: 1;
+}

@@ -12,20 +12,28 @@
 
 .app-alert {
 	width: 100%;
-	padding: 8px 16px;
+	padding: .8rem 1.6rem;
 	margin: 0;
-	box-sizing: border-box;
 	border-radius: 4px;
 	position: relative;
 	background-color: $white;
 	overflow: hidden;
 	opacity: 1;
 	display: flex;
-	align-items: center;
-	transition: opacity .2s;
+	justify-content: space-between;
+	min-width: 20rem;
+	// margin-right: 3rem;
+	z-index: 20000;
 
 	+ .app-alert {
-		margin-top: 10px;
+		margin-top: 1rem;
+	}
+
+	.app-alert-content {
+		flex: 1;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	&.alert-info {
@@ -43,4 +51,18 @@
 	&.alert-warning {
 		@include create-alert($warning, $warning-light-100)
 	}
+
+	.has-close-btn {
+		color: $white;
+		background-color: transparent;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		font-size: 1.2rem;
+		// margin-left: 1rem;
+	}
+	&.is-light .has-close-btn {
+		color: $gray-600;
+	}
+
 }
