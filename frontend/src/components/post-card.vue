@@ -27,22 +27,29 @@
       <div class="post-created">{{post.createdAt | timeSince}}</div>
     </section>
     <div class="post-add-comment">
-      add comment
+      <post-comment-form @submit="addComment"/>
     </div>
   </article>
 </template>
 
 <script>
 import MediaImage from "@/components/media-image.vue"
+import PostCommentForm from "@/components/post-comment-form.vue"
 
 export default {
   components: {
-    MediaImage
+    MediaImage,
+    PostCommentForm
   },
   props: {
     post: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    addComment(comment) {
+      this.$emit('add-comment', {post: this.post, comment})
     }
   }
 }
@@ -71,17 +78,6 @@ export default {
 
   .post-media {
     height: 300px;
-    // position: relative;
-
-    // img {
-    //   height: 100%;
-    //   left: 0;
-    //   position: absolute;
-    //   top: 0;
-    //   user-select: none;
-    //   width: 100%;
-    //   object-fit: cover;
-    // }
   }
 
   .post-actions {

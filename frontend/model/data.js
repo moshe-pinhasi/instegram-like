@@ -1,52 +1,3 @@
-
-
-// const userFeed = {
-//   id,
-//   userId,
-//   postId,
-//   createdAt,
-//   updatedAt
-// }
-
-// const userFollow = {
-//   id,
-//   userId,
-//   followId,
-//   createdAt,
-//   updatedAt
-// }
-
-// const post = {
-//   id,
-//   userId,
-//   media: {
-//      type: 'image',
-//      src,
-//   },
-//   text,
-//   likes,
-//   comments,
-//   createdAt,
-//   updatedAt
-// }
-
-// const postComment = {
-//   id,
-//   postId,
-//   userId,
-//   comment,
-//   createdAt,
-//   updatedAt
-// }
-
-// const postLike = {
-//   id,
-//   postId,
-//   userId,
-//   createdAt,
-//   updatedAt
-// }
-
 import {
   getDateISO, 
   makeId, 
@@ -63,8 +14,6 @@ const numberOfPost = numberOfUsers + 20
 
 
 // model creators
-
-
 /**
  * @typedef  {Object} User
  * @property {String} _id
@@ -312,3 +261,51 @@ export function createData() {
   createPostsComments()
   createPostsLikes()
 }
+
+
+// const userFeed = {
+//   id,
+//   userId,
+//   postId,
+//   createdAt,
+//   updatedAt
+// }
+
+// const userFollow = {
+//   id,
+//   userId,
+//   followId,
+//   createdAt,
+//   updatedAt
+// }
+
+// const post = {
+//   id,
+//   userId,
+//   media: {
+//      type: 'image',
+//      src,
+//   },
+//   text,
+//   likes,
+//   comments,
+//   createdAt,
+//   updatedAt
+// }
+
+// const postComment = {
+//   id,
+//   postId,
+//   userId,
+//   comment,
+//   createdAt,
+//   updatedAt
+// }
+
+// const postLike = {
+//   id,
+//   postId,
+//   userId,
+//   createdAt,
+//   updatedAt
+// }

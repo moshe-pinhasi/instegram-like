@@ -24,3 +24,31 @@
 2. Backend - Nodejs (with express)
 3. Database - mongodb
 4. Docker - ?
+
+### Client Services
+1. feed.service - responsible on the feed posts: load posts, load user posts (user details page)
+2. post.service - responsible on the post actions: create, remove, add comment to post, like a post
+3. user.service - responsile on the user actions
+4. auth.service - responsible on the authentication: singup, login, logout
+
+### Client Store
+1. feed store
+2. user store
+3. auth store
+
+### Server endpoints
+1. feed
+  1.1. GET /feed
+  1.2  GET /feed/:userid/media
+  1.3  GET /feed/:userid/media/:mediaid
+2. post
+  2.1 POST /post
+  2.2 DELETE /post/:id
+  2.3 POST /post/:id/comment
+  2.4 POST /post/:id/like
+3. user
+  3.1 GET /user/loggedin
+4. auth
+  4.1 POST /auth/signup
+  4.2 POST /auth/login
+  4.3 POST /auth/logout

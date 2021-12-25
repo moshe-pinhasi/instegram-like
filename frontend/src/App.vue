@@ -25,7 +25,6 @@ export default {
     AppFooter,
   },
   created() {
-    this.$store.dispatch({type: 'feedStore/loadPosts'})
   }
 }
 </script>
