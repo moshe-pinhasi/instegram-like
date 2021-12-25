@@ -441,14 +441,14 @@
   </div> 
 </template>
 <script>
+import AppBadge from '@/components/common/app-badge.vue'
+import AppLoader from '@/components/common/app-loader.vue'
+import AppAlert from '@/components/common/app-alert.vue'
+import AppCard from '@/components/common/app-card.vue'
 import AppToggle from '@/components/form/app-toggle.vue'
-import AppBadge from '@/components/form/app-badge.vue'
-import AppLoader from '@/components/form/app-loader.vue'
-import AppAlert from '@/components/form/app-alert.vue'
 import AppInput from '@/components/form/app-input.vue'
 import AppRadio from '@/components/form/app-radio.vue'
 import AppCheckbox from '@/components/form/app-checkbox.vue'
-import AppCard from '@/components/form/app-card.vue'
 
 import {alertService} from '@/services/alert.service'
 
