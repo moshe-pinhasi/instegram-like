@@ -119,6 +119,33 @@
 
       <div class="outer-row">
         <div class="col-12">
+          <h4>btn txt</h4>
+        </div>
+        <div class="row">
+          <div class="col-2">
+            <button class="btn btn-txt">primary</button>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-txt btn-success">success</button>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-txt btn-danger">danger</button>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-txt btn-warning">warning</button>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-txt btn-info">info</button>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-txt btn-disabled">disabled</button>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <div class="outer-row">
+        <div class="col-12">
           <h4>btn rounded</h4>
         </div>
         <div class="row">
