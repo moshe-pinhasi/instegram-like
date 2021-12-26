@@ -10,13 +10,15 @@
 @import 'base/utils';
 @import 'base/animations';
 
-// cmps
-@import 'components/badge';
-@import 'components/loader';
-@import 'components/btns';
-@import 'components/alert';
-@import 'components/card';
-@import 'components/message';
+// common cmps
+@import 'components/common/alert';
+@import 'components/common/badge';
+@import 'components/common/loader';
+@import 'components/common/btns';
+@import 'components/common/card';
+@import 'components/common/message';
+@import 'components/common/menu';
+
 
 // form
 @import 'components/form/input';

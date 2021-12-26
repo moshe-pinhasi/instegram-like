@@ -7,6 +7,16 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/whiteboard',
+    name: 'whiteboard',
+    component: () => import(/* webpackChunkName: "whiteboard" */ '../views/whiteboard.vue')
+  },
+  {
+    path: '/cmps',
+    name: 'cmps',
+    component: () => import(/* webpackChunkName: "cmps" */ '../views/cmps.vue')
+  },
+  {
     path: '/',
     name: 'feed-app',
     component: FeedApp,
@@ -19,29 +29,10 @@ const routes = [
       {
         path: ':id',
         name: 'user-details',
-        // route level code-splitting
-        // this generates a separate chunk (user-details.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "user-details" */ '../views/feed/user-details.vue')
       },
     ],
   },
-  {
-    path: '/whiteboard',
-    name: 'whiteboard',
-    // route level code-splitting
-    // this generates a separate chunk (whiteboard.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "whiteboard" */ '../views/whiteboard.vue')
-  },
-  {
-    path: '/cmps',
-    name: 'cmps',
-    // route level code-splitting
-    // this generates a separate chunk (cmps.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "cmps" */ '../views/cmps.vue')
-  }
 ]
 
 const router = new VueRouter({

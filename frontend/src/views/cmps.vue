@@ -11,6 +11,35 @@
     <hr /> -->
 
     <section>
+      <h1>App </h1>
+      <div class="row">
+
+        <div class="col-3">
+          <h3>default</h3>
+          <AppMenu @select="handleSelect">
+            <AppMenuItem
+              v-for="item in [
+                {val: 'profile', txt: 'Profile'},
+                {val: 'saved', txt: 'Saved'},
+                {val: 'logout', txt: 'Logout'}
+              ]" 
+              :key="item.val" :item="item">{{item.txt}}</AppMenuItem>
+          </AppMenu>
+        </div>
+        <div class="col-4">
+          <h3>open at right side</h3>
+          <AppMenu open-at="right" @select="handleSelect">
+            <AppMenuItem item="Action 1">Action 1</AppMenuItem>
+            <AppMenuItem item="Action 2">Action 2</AppMenuItem>
+            <AppMenuItem item="Action 3">Action 3</AppMenuItem>
+          </AppMenu>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section>
       <h1>App Messages</h1>
       <div class="row">
         <div class="col-6">
@@ -477,6 +506,9 @@ import AppInput from '@/components/form/app-input.vue'
 import AppRadio from '@/components/form/app-radio.vue'
 import AppCheckbox from '@/components/form/app-checkbox.vue'
 
+import AppMenu from '@/components/common/app-menu/app-menu.vue'
+import AppMenuItem from "@/components/common/app-menu/app-menu-item.vue";
+
 import {alertService} from '@/services/alert.service'
 
 export default {
@@ -488,7 +520,9 @@ export default {
     AppInput,
     AppRadio,
     AppCheckbox,
-    AppCard
+    AppCard,
+    AppMenu,
+    AppMenuItem
   },
   data() {
     return {
@@ -529,13 +563,16 @@ export default {
       // setTimeout( () => {
       //   alertService.success('some text here 4')
       // }, 4000)
+    },
+    handleSelect(selectedItem) {
+      console.log('selectedItem', selectedItem);
     }
   }
 }
 </script>
 <style lang="scss" scoped>
 .cmps-page {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 
   section {
     margin: 20px 0;
