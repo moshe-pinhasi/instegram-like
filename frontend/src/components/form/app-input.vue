@@ -66,7 +66,7 @@ export default {
       return !!this.$slots['suffix-icon']
     },
     hasError() {
-      return this.errorMessage || (this.required && this.dirty && !this.val)
+      return this.errorMessage || (this.required && this.dirty && !this.input.trim())
     }
   },
   methods: {

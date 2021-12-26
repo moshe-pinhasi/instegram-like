@@ -10,6 +10,18 @@
 
     <hr /> -->
 
+    <section class="inputs">
+      <h1>App Textarea</h1>
+      <div class="row">
+        <div class="col-6">
+          <h4>Textarea default</h4>
+          <AppTextarea placeholder="Name" v-model="textareaModel" />  
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
     <section>
       <h1>App Modal</h1>
       <div class="row">
@@ -49,6 +61,8 @@
        </div>
       </div>
     </section>
+
+    <hr />
 
     <section>
       <h1>App Drawer</h1>
@@ -581,7 +595,7 @@ import AppToggle from '@/components/form/app-toggle.vue'
 import AppInput from '@/components/form/app-input.vue'
 import AppRadio from '@/components/form/app-radio.vue'
 import AppCheckbox from '@/components/form/app-checkbox.vue'
-
+import AppTextarea from '@/components/form/app-textarea.vue'
 import {alertService} from '@/services/alert.service'
 
 export default {
@@ -598,11 +612,13 @@ export default {
     AppMenuItem,
     AppDrawer,
     AppModal,
+    AppTextarea,
   },
   data() {
     return {
       toggleOn: false,
       inputModel: "",
+      textareaModel: "",
       radioOption: "1",
       checkboxModel: [],
       cardShadow: false,
