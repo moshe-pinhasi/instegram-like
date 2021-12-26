@@ -48,7 +48,7 @@ function startTimer(id) {
       ints.style['bottom'] = `${pos}px`;
     })
 
-    setTimeout(elMsg.remove, 0)
+    setTimeout(() => elMsg.remove(), 0)
   }, 3000);
 }
 
