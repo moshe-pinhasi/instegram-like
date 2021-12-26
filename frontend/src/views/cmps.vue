@@ -13,26 +13,66 @@
     <section>
       <h1>App </h1>
       <div class="row">
+       <div class="col-4">
+        <button type="button" @click="openModalTop = true">
+          Toggle Modal Top
+        </button>
+        <AppModal v-model="openModalTop" :close-on-click="false">
+          <AppCard>
+            <div slot="header" class="">
+              Modal Card Hedaer
+            </div>
+            <div v-for="o in [1,2,3,4]" :key="o" class="text item">
+              {{'List item ' + o }}
+            </div>
+
+            <footer>
+              <button @click="openModalTop = false">close</button>
+            </footer>
+          </AppCard>
+        </AppModal>  
+       </div>
+       <div class="col-4">
+          <button type="button" @click="openModalBottom = true">
+          Toggle Modal Top
+        </button>
+        <AppModal v-model="openModalBottom" position="bottom">
+          <AppCard>
+            <div slot="header" class="">
+              Modal Card Hedaer
+            </div>
+            <div v-for="o in [1,2,3,4]" :key="o" class="text item">
+              {{'List item ' + o }}
+            </div>
+          </AppCard>
+        </AppModal>  
+       </div>
+      </div>
+    </section>
+
+    <section>
+      <h1>App </h1>
+      <div class="row">
         <div class="col-3">
-          <button type="button" class="" @click="showDrawerLeft = !showDrawerLeft">
+          <button type="button" @click="showDrawerLeft = !showDrawerLeft">
             Toggle Drawer Left
           </button>
           <AppDrawer v-model="showDrawerLeft">some content</AppDrawer>  
         </div>
         <div class="col-3">
-          <button type="button" class="" @click="showDrawerRight = !showDrawerRight">
+          <button type="button" @click="showDrawerRight = !showDrawerRight">
             Toggle Drawer Right
           </button>
           <AppDrawer v-model="showDrawerRight" position="right">some content</AppDrawer>
         </div>
         <div class="col-3">
-          <button type="button" class="" @click="showDrawerTop = !showDrawerTop">
+          <button type="button" @click="showDrawerTop = !showDrawerTop">
             Toggle Drawer Top
           </button>
           <AppDrawer v-model="showDrawerTop" position="top">some content</AppDrawer>
         </div>
         <div class="col-3">
-          <button type="button" class="" @click="showDrawerBottom = !showDrawerBottom">
+          <button type="button" @click="showDrawerBottom = !showDrawerBottom">
             Toggle Drawer Bottom
           </button>
           <AppDrawer v-model="showDrawerBottom" position="bottom">some content</AppDrawer>
@@ -534,12 +574,13 @@ import AppLoader from '@/components/common/app-loader.vue'
 import AppAlert from '@/components/common/app-alert.vue'
 import AppCard from '@/components/common/app-card.vue'
 import AppDrawer from '@/components/common/app-drawer.vue'
+import AppModal from '@/components/common/app-modal.vue'
+import AppMenu from '@/components/common/app-menu/app-menu.vue'
 import AppMenuItem from "@/components/common/app-menu/app-menu-item.vue";
 import AppToggle from '@/components/form/app-toggle.vue'
 import AppInput from '@/components/form/app-input.vue'
 import AppRadio from '@/components/form/app-radio.vue'
 import AppCheckbox from '@/components/form/app-checkbox.vue'
-import AppMenu from '@/components/common/app-menu/app-menu.vue'
 
 import {alertService} from '@/services/alert.service'
 
@@ -556,6 +597,7 @@ export default {
     AppMenu,
     AppMenuItem,
     AppDrawer,
+    AppModal,
   },
   data() {
     return {
@@ -569,6 +611,8 @@ export default {
       showDrawerRight: false,
       showDrawerTop: false,
       showDrawerBottom: false,
+      openModalTop: false,
+      openModalBottom: false,
     }
   },
   created() {
