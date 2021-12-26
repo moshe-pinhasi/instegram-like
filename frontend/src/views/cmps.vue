@@ -13,6 +13,38 @@
     <section>
       <h1>App </h1>
       <div class="row">
+        <div class="col-3">
+          <button type="button" class="" @click="showDrawerLeft = !showDrawerLeft">
+            Toggle Drawer Left
+          </button>
+          <AppDrawer v-model="showDrawerLeft">some content</AppDrawer>  
+        </div>
+        <div class="col-3">
+          <button type="button" class="" @click="showDrawerRight = !showDrawerRight">
+            Toggle Drawer Right
+          </button>
+          <AppDrawer v-model="showDrawerRight" position="right">some content</AppDrawer>
+        </div>
+        <div class="col-3">
+          <button type="button" class="" @click="showDrawerTop = !showDrawerTop">
+            Toggle Drawer Top
+          </button>
+          <AppDrawer v-model="showDrawerTop" position="top">some content</AppDrawer>
+        </div>
+        <div class="col-3">
+          <button type="button" class="" @click="showDrawerBottom = !showDrawerBottom">
+            Toggle Drawer Bottom
+          </button>
+          <AppDrawer v-model="showDrawerBottom" position="bottom">some content</AppDrawer>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section>
+      <h1>App </h1>
+      <div class="row">
 
         <div class="col-3">
           <h3>default</h3>
@@ -501,13 +533,13 @@ import AppBadge from '@/components/common/app-badge.vue'
 import AppLoader from '@/components/common/app-loader.vue'
 import AppAlert from '@/components/common/app-alert.vue'
 import AppCard from '@/components/common/app-card.vue'
+import AppDrawer from '@/components/common/app-drawer.vue'
+import AppMenuItem from "@/components/common/app-menu/app-menu-item.vue";
 import AppToggle from '@/components/form/app-toggle.vue'
 import AppInput from '@/components/form/app-input.vue'
 import AppRadio from '@/components/form/app-radio.vue'
 import AppCheckbox from '@/components/form/app-checkbox.vue'
-
 import AppMenu from '@/components/common/app-menu/app-menu.vue'
-import AppMenuItem from "@/components/common/app-menu/app-menu-item.vue";
 
 import {alertService} from '@/services/alert.service'
 
@@ -522,7 +554,8 @@ export default {
     AppCheckbox,
     AppCard,
     AppMenu,
-    AppMenuItem
+    AppMenuItem,
+    AppDrawer,
   },
   data() {
     return {
@@ -531,7 +564,11 @@ export default {
       radioOption: "1",
       checkboxModel: [],
       cardShadow: false,
-      alertCount: 0
+      alertCount: 0,
+      showDrawerLeft: false,
+      showDrawerRight: false,
+      showDrawerTop: false,
+      showDrawerBottom: false,
     }
   },
   created() {

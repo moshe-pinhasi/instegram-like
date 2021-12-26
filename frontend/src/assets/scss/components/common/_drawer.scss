@@ -1,0 +1,89 @@
+.app-drawer {
+  z-index: 99999;
+  position: relative;
+
+  .backdrop {
+    position: fixed;
+    transition: all .7s;
+    opacity: 0;
+    top: 0;
+    left:0;
+    background-color: $backdrop-color;
+  }
+
+  &.app-drawer-open {
+    .backdrop {
+      bottom: 0;
+      right: 0;
+      opacity: 1;
+    }
+
+    .app-drawer-open-from {
+      &-left {
+        transform: translate(0, 0);
+      }
+
+      &-right {
+        transform: translate(0, 0);
+      }
+
+      &-top {
+        transform: translate(0, 0);
+      }
+      &-bottom {
+        transform: translate(0, 0);
+      }
+    }
+  }
+
+  .app-drawer-content {
+    position: fixed;
+    z-index: 1;
+    background-color: $white;
+    transition: all .3s;
+    transform: translate(-500%, 0);
+  }
+  
+  .app-drawer-open-from {
+    &-left {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 30rem;
+        height: 100%;
+        transform: translate(-500%, 0);
+    }
+
+    &-right {
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 30rem;
+        height: 100%;
+        transform: translate(500%, 0);
+    }
+
+    &-top {
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        min-height: 20rem;
+        transform: translate(0, -500%);
+    }
+    &-bottom {
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+        min-height: 20rem;
+        transform: translate(0, 500%);
+    }
+  }
+}
+
+// need to add this to the body 
+// to prevent the scroll when drawer is open
+.app-drawer-prevent-scroll {
+  overflow: hidden;
+}
