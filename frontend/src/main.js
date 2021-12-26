@@ -8,6 +8,7 @@ import router from './router'
 import store from './store'
 
 import './filters'
+import './directives'
 
 import './assets/scss/main.scss'
 

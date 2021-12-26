@@ -1,5 +1,5 @@
 <template>
-  <div @click="toggle" class="app-menu">
+  <div @click="toggle" class="app-menu" v-clickoutside="closeMenu">
     <div class="app-menu-btn">
       <slot name="toggler">
         <button class="btn btn-txt">
@@ -31,6 +31,10 @@ export default {
     hideShadow: {
       type: Boolean,
       default: false
+    },
+    closeOnClickouside: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -49,6 +53,9 @@ export default {
     },
     handleClick(item) {
       this.$emit('select', item)
+    },
+    closeMenu() {
+      this.closeOnClickouside && (this.active = false)
     }
   }
 };

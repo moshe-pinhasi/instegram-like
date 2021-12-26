@@ -11,7 +11,7 @@
     <hr /> -->
 
     <section>
-      <h1>App </h1>
+      <h1>App Modal</h1>
       <div class="row">
        <div class="col-4">
         <button type="button" @click="openModalTop = true">
@@ -51,7 +51,7 @@
     </section>
 
     <section>
-      <h1>App </h1>
+      <h1>App Drawer</h1>
       <div class="row">
         <div class="col-3">
           <button type="button" @click="showDrawerLeft = !showDrawerLeft">
@@ -83,7 +83,7 @@
     <hr />
 
     <section>
-      <h1>App </h1>
+      <h1>App Menu</h1>
       <div class="row">
 
         <div class="col-3">
