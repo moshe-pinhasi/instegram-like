@@ -1,32 +1,37 @@
 <template>
   <article class="post-card">
-    <div class="post-header">
-      <i class="far fa-user-circle"></i> 
-      <router-link :to="`${post.creator.nickname}`">{{post.creator.name}}</router-link>
+    <div class="post-card-header">
+      <router-link class="post-card-user-details" :to="`${post.creator.nickname}`">
+        <i class="post-card-user-avatar far fa-user-circle"></i> 
+        {{post.creator.name}}
+      </router-link>
+      <div class="post-card-user-actions">
+        <i class="fas fa-ellipsis-h"></i>
+      </div>
     </div>
-    <div class="post-media">
+    <div class="post-card-media">
       <media-image :media="post.media" />
     </div>
-    <section class="post-details">
-      <div class="post-text">{{post.text}}</div>
-      <div class="post-actions">
+    <section class="post-card-details">
+      <div class="post-card-text">{{post.text}}</div>
+      <div class="post-card-actions">
         <i class="far fa-heart"></i>
         <i class="far fa-comment"></i>
         <i class="far fa-paper-plane"></i>
       </div>
-      <div class="post-likes">Likes: {{post.likes}}</div>
-      <div class="post-comments" v-if="post.comments">
+      <div class="post-card-likes">Likes: {{post.likes}}</div>
+      <div class="post-card-comments" v-if="post.comments">
         <div v-if="post.comments > 1">
           View all {{post.comments}} comments
         </div>
-        <div class="post-comment" v-if="post.commentedBy.length > 0">
-          <span class="post-comment-creator">{{post.commentedBy[0].creator.name}}</span>
+        <div class="post-card-comment" v-if="post.commentedBy.length > 0">
+          <span class="post-card-comment-creator">{{post.commentedBy[0].creator.name}}</span>
           {{post.commentedBy[0].comment}}
         </div>
       </div>
-      <div class="post-created">{{post.createdAt | timeSince}}</div>
+      <div class="post-card-created">{{post.createdAt | timeSince}}</div>
     </section>
-    <div class="post-add-comment">
+    <div class="post-card-add-comment">
       <post-comment-form @submit="addComment"/>
     </div>
   </article>
@@ -64,23 +69,33 @@ export default {
 
   $padding: 1.4rem;
 
-  .post-header {
+  .post-card-header {
     padding: $padding;
     border-bottom: 1px solid $gray-300;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 
-    i {
-      font-size: 3.2rem;
-      margin: 0 1rem 0 0;
+    .post-card-user-details {
+      display: flex;
+      align-items: center;
+
+      .post-card-user-avatar {
+        font-size: 3.2rem;
+        margin: 0 1rem 0 0;
+      }
+    }
+
+    .post-card-user-actions {
+      cursor: pointer
     }
   }
 
-  .post-media {
+  .post-card-media {
     height: 300px;
   }
 
-  .post-actions {
+  .post-card-actions {
     padding: 0 0 1.4rem 0;
     display: flex;
     align-items: center;
@@ -96,37 +111,38 @@ export default {
     }
   }
 
-  .post-details {
+  .post-card-details {
     padding: $padding;
   }
 
-  .post-likes {
+  .post-card-likes {
     padding: 0 0 1rem 0;
   }
 
-  .post-comments {
+  .post-card-comments {
     color: $gray-600;
     padding: 0 0 1rem 0;
   }
 
-  .post-comment {
+  .post-card-comment {
     color: initial;
   }
-  .post-comment-creator {
+
+  .post-card-comment-creator {
     font-weight: bold;
   }
 
-  .post-created {
+  .post-card-created {
     text-transform: uppercase;
     font-size: 1rem;
     color: $gray-600;
   }
 
-  .post-add-comment {
+  .post-card-add-comment {
     padding: $padding;
   }
 
-  .post-add-comment {
+  .post-card-add-comment {
     border-top: 1px solid $gray-300;
   }
 }
