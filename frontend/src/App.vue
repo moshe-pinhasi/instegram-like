@@ -4,14 +4,10 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div> -->
-
-
     <app-header />
-
     <main class="app-main-content">
       <router-view />
     </main>
-
     <app-footer class="show-in-phone" />
   </div>
 </template>
@@ -40,6 +36,10 @@ export default {
     max-width: $max-content-width;
     min-width: $max-content-width;
     margin: 0 auto;
+
+    @include respond(phone) {
+      min-width: 100%;
+    }
   }
 }
 </style>

@@ -17,6 +17,27 @@ const routes = [
     component: () => import(/* webpackChunkName: "cmps" */ '../views/cmps.vue')
   },
   {
+    path: '/auth',
+    name: 'auth-app',
+    component: () => import(/* webpackChunkName: "auth-app" */ '../views/auth/auth-app.vue'),
+    children: [
+      {
+        path: 'login',
+        name: 'login-index',
+        component: () => import(/* webpackChunkName: "login-index" */ '../views/auth/login-index.vue')
+      },
+      {
+        path: 'signup',
+        name: 'signup-index',
+        component: () => import(/* webpackChunkName: "signup-index" */ '../views/auth/signup-index.vue')
+      },
+      {
+        path: '/*',
+        redirect: {name: 'login-index'}
+      }
+    ],
+  },
+  {
     path: '/',
     name: 'feed-app',
     component: FeedApp,

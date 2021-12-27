@@ -11,6 +11,10 @@ $spacer: 1.2rem;
   display: flex;
   flex-wrap: wrap;
   flex: 1 1 auto;
+  
+  &:not(:last-child) {
+    margin: 0 0 10px 0;
+  }
 }
 
 // columns

@@ -1,21 +1,24 @@
 <template>
   <div class="app-input" :class="{'has-prefix': hasPrefixSlot, 'has-suffix': hasSuffixSlot}">
-    <div class="input-row">
-      <div class="prefix">
-        <slot name="prefix-icon"/>
+    <label>
+      <div class="app-input-inner" :class="{'small-placeholder': focused || !!input}">
+        <span class="app-input-placeholder">{{placeholder}}</span>
+        <div class="prefix">
+          <slot name="prefix-icon"/>
+        </div>
+        <input :type="type"
+              class="input"
+              @blur="onBlur"
+              @focus="focused = true"
+              @input="$emit('input', input)"
+              v-model="input"
+              :class="{'input-has-error': hasError, 'input-disabled': disabled, 'input-dirty': dirty}" 
+              :disabled="disabled"/>
+        <div class="suffix">
+          <slot name="suffix-icon"/>
+        </div>
       </div>
-      <input :type="type"
-            class="input"
-            @blur="onBlur"
-            @input="$emit('input', input)"
-            v-model="input"
-            :class="{'input-has-error': hasError, 'input-disabled': disabled, 'input-dirty': dirty}" 
-            :disabled="disabled" 
-            :placeholder="placeholder" />
-      <div class="suffix">
-        <slot name="suffix-icon"/>
-      </div>
-    </div>
+    </label>
     <p class="txt-error">{{errorMessage}}</p>
   </div>
 </template>
@@ -72,6 +75,7 @@ export default {
   methods: {
     onBlur() {
       this.dirty = true
+      this.focused = false
     }
   }
 }
