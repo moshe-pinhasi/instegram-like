@@ -31,10 +31,10 @@ const routes = [
         name: 'signup-index',
         component: () => import(/* webpackChunkName: "signup-index" */ '../views/auth/signup-index.vue')
       },
-      {
-        path: '/*',
-        redirect: {name: 'login-index'}
-      }
+      // {
+      //   path: '/*',
+      //   redirect: {name: 'login-index'}
+      // }
     ],
   },
   {

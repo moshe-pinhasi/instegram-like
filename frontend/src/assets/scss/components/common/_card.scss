@@ -1,15 +1,19 @@
 .app-card {
   border-radius: 4px;
-  border: 1px solid $gray-300;
+  border: 1px solid $gray-400;
   background-color: $white;
   overflow: hidden;
   color: $gray-900;
   transition: .3s;
   width: 100%;
 
-  .app-card-header {
+  .app-card-header:empty {
+    display: none;
+  }
+
+  .app-card-header:not(:empty) {
     padding: 1.8rem 2rem;
-    border-bottom: 1px solid $gray-300;
+    border-bottom: 1px solid $gray-400;
     box-sizing: border-box;
   }
 

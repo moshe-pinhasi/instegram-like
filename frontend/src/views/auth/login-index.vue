@@ -1,34 +1,43 @@
 <template>
   <section class="login-index">
 
-    <div class="auth-box">
-      <section class="title"><h1>Instagem</h1></section>
-      <section class="form-box">
-        <form class="login-box" @submit.prevent="submit">
-          <div class="row">
-            <app-input placeholder="Username" :error-message="errors.username" v-model="user.username" />
-          </div>
+    <app-card class="auth-box">
+      <section class="logo-section"><h1>Instagem</h1></section>
+      <form class="login-form" @submit.prevent="submit">
+        <div class="row">
+          <app-input placeholder="Username" :error-message="errors.username" v-model="user.username" />
+        </div>
 
-          <div class="row">
-            <app-input type="password" placeholder="Password" :error-message="errors.password" v-model="user.password" />
-          </div>
+        <div class="row">
+          <app-input type="password" placeholder="Password" :error-message="errors.password" v-model="user.password" />
+        </div>
 
-          <div class="row">
-            <button class="btn btn-primary full-width">Log in</button>
-          </div>
-        </form>
-      </section>
-    </div>
+        <div class="row">
+          <button class="btn btn-primary full-width">
+            <app-spinner v-if="loading" class="spinner" />
+            Log in
+          </button>
+        </div>
+      </form>
+    </app-card>
+
+    <app-card class="auth-box switch-page-box">
+      Don't have an account? <router-link :to="{name: 'signup-index'}" class="btn btn-txt"> Sign up</router-link>
+    </app-card>
   </section>
 </template>
 
 <script>
 import AppInput from '@/components/form/app-input.vue'
+import AppSpinner from '@/components/common/app-spinner.vue'
+import AppCard  from '@/components/common/app-card.vue'
 
 export default {
   name: "LoginIndex",
   components: {
     AppInput,
+    AppSpinner,
+    AppCard,
   },
   data() {
     return {
@@ -36,7 +45,8 @@ export default {
         username: '',
         password: ''
       },
-      errors: {}
+      errors: {},
+      loading: false
     }
   },
   methods: {
@@ -64,8 +74,12 @@ export default {
         return
       }
 
+      this.loading = true
       this.errors = {}
-      console.log('do login!');
+      setTimeout(() => {
+        console.log('login in process!');
+        this.loading = false
+      }, 3000);
     }
   }
 }
@@ -74,29 +88,35 @@ export default {
 <style lang="scss" scoped>
 .login-index {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 100%;
 
   .auth-box {
-    width: 100%;
     max-width: 35rem;
-    // max-width: 35rem;
-    background-color: $white;
-    border: 1px solid $border-base;
-    border-radius: 1px;
-    padding: 2rem 5rem 3rem 5rem;
-    // 20px 70px 30px 70px
 
-    .title {
+    &:not(:last-child) {
+      margin: 0 0 1rem 0;
+    }
+
+    &.switch-page-box {
+      font-size: 1.3rem;
+      text-align: center;
+      color: $gray-700;
+    }
+
+    .logo-section {
       font-family: $logo-font-family;
       text-align: center;
-      margin-bottom: 2rem;
+      margin: 2rem 0;
+      letter-spacing: 4px;
     }
+  }
 
-    .form-box {
-
-    }
+  .spinner {
+    position: absolute;
+    left: 30%;
   }
 }
 </style>

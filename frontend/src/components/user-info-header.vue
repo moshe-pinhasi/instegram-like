@@ -5,7 +5,7 @@
     </div>
     <section class="user-info-details">
       <div>
-        <h3 class="user-info-name">{{user.name}}</h3>
+        <h3 class="user-info-name">{{user.fullname}}</h3>
         <button class="btn btn-outline btn-sm">Follow</button>
       </div>
       <ul class="user-statistics">

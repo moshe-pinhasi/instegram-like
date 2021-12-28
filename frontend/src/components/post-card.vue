@@ -3,7 +3,7 @@
     <div class="post-card-header">
       <router-link class="post-card-user-details" :to="`${post.creator.nickname}`">
         <i class="post-card-user-avatar far fa-user-circle"></i> 
-        {{post.creator.name}}
+        {{post.creator.fullname}}
       </router-link>
       <div class="post-card-user-actions">
         <i class="fas fa-ellipsis-h"></i>
@@ -25,7 +25,7 @@
           View all {{post.comments}} comments
         </div>
         <div class="post-card-comment" v-if="post.commentedBy.length > 0">
-          <span class="post-card-comment-creator">{{post.commentedBy[0].creator.name}}</span>
+          <span class="post-card-comment-creator">{{post.commentedBy[0].creator.fullname}}</span>
           {{post.commentedBy[0].comment}}
         </div>
       </div>

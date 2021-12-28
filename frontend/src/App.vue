@@ -1,14 +1,14 @@
 <template>
-  <div class="app-main">
+  <div class="app-main" :class="{'has-header': loggedinUser}">
     <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div> -->
-    <app-header />
+    <app-header v-if="loggedinUser" />
     <main class="app-main-content">
       <router-view />
     </main>
-    <app-footer class="show-in-phone" />
+    <app-footer class="show-in-phone" v-if="loggedinUser" />
   </div>
 </template>
 <script>
@@ -21,21 +21,43 @@ export default {
     AppFooter,
   },
   created() {
+  },
+  computed: {
+    loggedinUser() {
+      return false
+    }
   }
 }
 </script>
 <style lang="scss" scoped>
 .app-main {
-  padding-top: $desktop-nav-height;
+  padding: 0;
+  flex: 1;
+  // min-height: 100%;
+  // height: 100%;
 
-  @include respond(phone) {
-    padding-bottom: $footer-nav-height;
+  &.has-header {
+    padding-top: $desktop-nav-height;
+  
+    @include respond(phone) {
+      padding-bottom: $footer-nav-height;
+    }
   }
 
   .app-main-content {
     max-width: $max-content-width;
     min-width: $max-content-width;
     margin: 0 auto;
+    // min-height: 100%;
+    display: flex;
+    height: 100%;
+
+    > section {
+      // min-height: 100vh;
+      // background: red;
+      flex: 1;
+      // height: 100%;
+    }
 
     @include respond(phone) {
       min-width: 100%;
@@ -43,3 +65,4 @@ export default {
   }
 }
 </style>
+

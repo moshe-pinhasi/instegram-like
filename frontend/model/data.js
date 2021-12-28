@@ -17,8 +17,8 @@ const numberOfPost = numberOfUsers + 20
 /**
  * @typedef  {Object} User
  * @property {String} _id
- * @property {String} name
- * @property {String} nickname
+ * @property {String} fullname
+ * @property {String} username
  * @property {String} email
  * @property {String} profileImg
  * @property {String} createdAt
@@ -28,8 +28,8 @@ function createUser() {
   const {firstName, lastName} = getRndName()
   return {
     _id: makeId(10),
-    name: `${firstName} ${lastName}`,
-    nickname: `${firstName.toLowerCase()}_${lastName.toLowerCase()}`,
+    fullname: `${firstName} ${lastName}`,
+    username: `${firstName.toLowerCase()}_${lastName.toLowerCase()}`,
     profileImg: ``,
     email: `${firstName.toLowerCase()}-${lastName.toLowerCase()}@gmail.com`,
     createdAt: getDateISO(),

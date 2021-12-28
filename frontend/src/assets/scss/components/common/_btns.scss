@@ -45,7 +45,9 @@
 }
 
 .btn {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
@@ -53,11 +55,11 @@
   border: 1px solid $gray-500;
   color: $gray-800;
   -webkit-appearance: none;
-  text-align: center;
   outline: none;
   margin: 0;
   transition: .1s;
   font-weight: 500;
+  position: relative;
 
   // default size
   padding: 1rem 2rem;
@@ -170,6 +172,8 @@
 
 // txt btns
 .btn-txt {
+  display: inline-block;
+  text-align: center;
   background-color: transparent;
   border: transparent;
   color: $primary;

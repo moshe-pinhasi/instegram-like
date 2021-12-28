@@ -25,10 +25,10 @@ html {
 
 body {
     box-sizing: border-box;
-    // background-color: $clr-grey-0;
     background-color: $gray-100;
     font-family: $main-font-family;
     font-size: 1.6rem;
+    display: flex;
 }
 
 ol, ul, li {
