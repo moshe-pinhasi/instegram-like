@@ -13,7 +13,6 @@ const mutations = {
 const actions = {
   async loadLoggedinUser({commit}) {
     try {
-      console.log('loadLoggedinUser');
       const {user} = await userService.getCurrent()
       commit('setLoggedinUser', user)
     } catch(e) {

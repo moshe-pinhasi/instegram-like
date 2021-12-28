@@ -23,6 +23,20 @@ function get(filterBy = {}) {
   const postLike = storageService.get('postLike')
   const postComment = storageService.get('postComment')
 
+  const {user} = storageService.get('session') || {}
+  let postLikedByCurrentUser = {}
+  if (user) {
+    postLikedByCurrentUser = 
+      postLike
+        .filter(pl => pl.userId === user._id)
+        .reduce((acc, pl) => {
+          acc[pl.postId] = true
+          return acc
+        }, {})
+
+    console.log('postLikedByCurrentUser', postLikedByCurrentUser);
+  }
+
   const posts = feed.map(post => postsMap[post.postId])
       .map(post => {
         const likedBy = postLike.filter(pl => pl.postId === post._id).slice(0, 3).map(pl => usersMap[pl.userId])
@@ -37,15 +51,15 @@ function get(filterBy = {}) {
               }
             })
         return {
-          ...post, 
-          userId: undefined,
+          ...post,
           creator: usersMap[post.userId],
+          likedByUser: !!postLikedByCurrentUser[post._id],
           likedBy,
           commentedBy
         }
       })
   
-  // console.log('posts', posts);
+  console.log('posts', posts);
   return Promise.resolve(posts)
 }
 
