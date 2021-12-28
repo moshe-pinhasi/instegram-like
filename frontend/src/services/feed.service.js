@@ -40,6 +40,7 @@ function get(filterBy = {}) {
   const posts = feed.map(post => postsMap[post.postId])
       .map(post => {
         const likedBy = postLike.filter(pl => pl.postId === post._id).slice(0, 3).map(pl => usersMap[pl.userId])
+        // if user added comment to this post return this comment only, otherwise, do this:  
         const commentedBy = 
           postComment
             .filter(pc => pc.postId === post._id)

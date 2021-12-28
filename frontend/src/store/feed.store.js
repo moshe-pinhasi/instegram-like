@@ -36,7 +36,6 @@ const actions = {
     commit('setPosts', posts)
   },
   async postLike({commit}, {post}) {
-    console.log(`user liked the post id `, post._id);
     const {status} = await postService.like(post._id)
     console.log('status', status);
     if (status === 'like') {
