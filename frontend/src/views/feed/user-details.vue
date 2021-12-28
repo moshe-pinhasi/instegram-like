@@ -32,8 +32,8 @@ export default {
   async created() {
     try {
       this.loading = true
-      const nickname = this.$route.params.id
-      const user = await userService.get({nickname})
+      const username = this.$route.params.id
+      const user = await userService.get({username})
       this.user = await feedService.getUserInfo(user._id)
       this.posts = await feedService.getUserMedia(this.user._id)
     } catch (e) {

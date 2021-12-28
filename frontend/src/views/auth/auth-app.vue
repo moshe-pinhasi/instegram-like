@@ -10,3 +10,9 @@ export default {
   name: 'FeedApp',
 }
 </script>
+
+<style lang="scss" scoped>
+.auth-app {
+  height: 100%;
+}
+</style>

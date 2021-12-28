@@ -1,6 +1,5 @@
 <template>
   <section class="login-index">
-
     <app-card class="auth-box">
       <section class="logo-section"><h1>Instagem</h1></section>
       <form class="login-form" @submit.prevent="submit">
@@ -18,6 +17,9 @@
             Log in
           </button>
         </div>
+        <div class="row">
+          <p class="txt-error">{{errors.message}}</p>
+        </div>
       </form>
     </app-card>
 
@@ -31,6 +33,8 @@
 import AppInput from '@/components/form/app-input.vue'
 import AppSpinner from '@/components/common/app-spinner.vue'
 import AppCard  from '@/components/common/app-card.vue'
+
+import {authService} from '@/services/auth.service'
 
 export default {
   name: "LoginIndex",
@@ -64,22 +68,31 @@ export default {
 
       return Object.keys(errors).length > 0 ? errors : null
     },
-    submit() {
-      console.log('submit!');
-      
+    async submit() {
+      console.log('login-submit');
       const errors = this.isValidate(this.user)
-
       if (errors) {
         this.errors = errors
         return
       }
 
-      this.loading = true
-      this.errors = {}
-      setTimeout(() => {
-        console.log('login in process!');
-        this.loading = false
-      }, 3000);
+      try {
+        this.loading = true
+        this.errors = {}
+        console.log('login in process...');
+        await authService.login(this.user)        
+        await this.$store.dispatch({type: 'userStore/loadLoggedinUser'})
+        
+        setTimeout(() => {
+          this.loading = false
+          this.$router.push('/')
+        }, 3000);
+      } catch(e) {
+        setTimeout(() => {
+          this.errors = e.errors
+          this.loading = false
+        }, 3000);
+      }
     }
   }
 }
@@ -87,13 +100,14 @@ export default {
 
 <style lang="scss" scoped>
 .login-index {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
 
   .auth-box {
+    width: 100%;
     max-width: 35rem;
 
     &:not(:last-child) {
@@ -109,8 +123,11 @@ export default {
     .logo-section {
       font-family: $logo-font-family;
       text-align: center;
-      margin: 2rem 0;
       letter-spacing: 4px;
+    }
+
+    .login-form {
+      margin: 2rem 0 0 0;
     }
   }
 

@@ -45,7 +45,9 @@
   2.1 POST /post
   2.2 DELETE /post/:id
   2.3 POST /post/:id/comment
-  2.4 POST /post/:id/like
+  2.4 GET /post/:id/comment
+  2.5 POST /post/:id/like
+  2.6 GET /post/:id/like
 3. user
   3.1 GET /user/loggedin
 4. auth

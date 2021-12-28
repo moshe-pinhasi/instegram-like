@@ -26,6 +26,9 @@
             Sign up
           </button>
         </div>
+        <div class="row">
+          <p class="txt-error">{{errors.message}}</p>
+        </div>
       </form>
     </app-card>
 
@@ -40,6 +43,8 @@
 import AppInput from '@/components/form/app-input.vue'
 import AppSpinner from '@/components/common/app-spinner.vue'
 import AppCard  from '@/components/common/app-card.vue'
+
+import {authService} from '@/services/auth.service'
 
 export default {
   name: "LoginIndex",
@@ -73,22 +78,31 @@ export default {
 
       return Object.keys(errors).length > 0 ? errors : null
     },
-    submit() {
-      console.log('submit!');
-      
+    async submit() {
+      console.log('signup-submit');
       const errors = this.isValidate(this.user)
-
       if (errors) {
         this.errors = errors
         return
       }
 
-      this.loading = true
-      this.errors = {}
-      setTimeout(() => {
-        console.log('login in process!');
-        this.loading = false
-      }, 3000);
+      try {
+        this.loading = true
+        this.errors = {}
+        console.log('signup in process...');
+        await authService.signup(this.user)
+        console.log('loading  user...');
+        await this.$store.dispatch({type: 'userStore/loadLoggedinUser'})
+        setTimeout(() => {
+          this.loading = false
+          this.$router.push('/')
+        }, 3000);
+      } catch(e) {
+        setTimeout(() => {
+          this.errors = e.errors
+          this.loading = false
+        }, 3000);
+      }
     }
   }
 }
@@ -96,13 +110,14 @@ export default {
 
 <style lang="scss" scoped>
 .signup-index {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
 
   .auth-box {
+    width: 100%;
     max-width: 35rem;
 
     &:not(:last-child) {
@@ -124,6 +139,7 @@ export default {
     .logo-section {
       font-family: $logo-font-family;
       letter-spacing: 4px;
+      text-align: center;
     }
 
     .signup-form {

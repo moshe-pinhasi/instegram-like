@@ -9,7 +9,10 @@ const routes = [
   {
     path: '/whiteboard',
     name: 'whiteboard',
-    component: () => import(/* webpackChunkName: "whiteboard" */ '../views/whiteboard.vue')
+    component: () => import(/* webpackChunkName: "whiteboard" */ '../views/whiteboard.vue'),
+    meta: {
+      fullPage: true
+    },
   },
   {
     path: '/cmps',
@@ -24,12 +27,12 @@ const routes = [
       {
         path: 'login',
         name: 'login-index',
-        component: () => import(/* webpackChunkName: "login-index" */ '../views/auth/login-index.vue')
+        component: () => import(/* webpackChunkName: "login-index" */ '../views/auth/login-index.vue'),
       },
       {
         path: 'signup',
         name: 'signup-index',
-        component: () => import(/* webpackChunkName: "signup-index" */ '../views/auth/signup-index.vue')
+        component: () => import(/* webpackChunkName: "signup-index" */ '../views/auth/signup-index.vue'),
       },
       // {
       //   path: '/*',

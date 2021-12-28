@@ -1,22 +1,30 @@
+import { userService } from "@/services/user.service";
+
 const state = {
-  user: null,
+  loggedinUser: null,
 };
 
 const mutations = {
-  setPosts(state, user) {
-    state.user = user
+  setLoggedinUser(state, loggedinUser) {
+    state.loggedinUser = loggedinUser
   }  
 };
 
 const actions = {
-  async loadPosts({commit}) {
-    const posts = await feedService.get()
-    commit('setPosts', posts)
+  async loadLoggedinUser({commit}) {
+    try {
+      console.log('loadLoggedinUser');
+      const user = await userService.getCurrent()
+      commit('setLoggedinUser', user)
+    } catch(e) {
+      commit('setLoggedinUser', null)
+      console.error(e)
+    }
   }
 };
 
 const getters = {
-  user: (state) => state.user
+  loggedinUser: (state) => state.loggedinUser
 };
 
 export const userStore = {
