@@ -1,22 +1,52 @@
 <template>
   <nav class="app-header">
     <div class="app-header-content">
-      <div class="app-logo"><h1>Instagem</h1></div>
+      <div class="app-logo">
+          <router-link :to="{name: 'feed-index'}"><h1>Instagem</h1></router-link>
+      </div>
       <div class="app-header-actions">
         <i class="fas fa-home hide-for-phone"></i>
         <i class="far fa-plus-square"></i>
         <i class="far fa-heart"></i>
         <i class="far fa-comment-dots"></i>
-        <i class="far fa-user-circle hide-for-phone"></i>
+        <app-menu open-at="right">
+          <template #toggler>
+            <i class="far fa-user-circle hide-for-phone"></i>
+          </template>
+          <router-link v-if="!loggedinUser" tag="li" class="app-menu-item" :to="{name: 'login-index'}">Login</router-link>
+          <template v-else>
+            <router-link tag="li" 
+                         :to="{name: 'user-details', params: {id: loggedinUser.username}}"
+                         class="app-menu-item">Profile</router-link>
+            <router-link tag="li" 
+                         :to="{name: 'logout-index'}"
+                         class="app-menu-item">Logout</router-link>
+          </template>
+        </app-menu>
       </div>
     </div>  
   </nav>
 </template>
 
 <script>
+import AppMenu from '@/components/common/app-menu/app-menu.vue'
+import AppMenuItem from "@/components/common/app-menu/app-menu-item.vue";
+
 export default {
   name: 'AppHeader',
+  components: {
+    AppMenu,
+    AppMenuItem,
+  },
   props: {
+  },
+  computed: {
+    loggedinUser() {
+      return this.$store.getters['userStore/loggedinUser']
+    },
+    userMenu() {
+      return this.loggedinUser ? ['Profile', 'Logout'] : ['Login']
+    }
   }
 }
 </script>

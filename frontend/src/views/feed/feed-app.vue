@@ -1,7 +1,9 @@
 <template>
   <section class="feed-app">
     <app-header />
-    <router-view />
+    <main class="feed-app-main-content">
+      <router-view />
+    </main>
     <app-footer class="show-in-phone" />
   </section>
 </template>
@@ -9,6 +11,7 @@
 <script>
 import AppHeader from '@/components/app-header.vue'
 import AppFooter from '@/components/app-footer.vue'
+import {authService} from '@/services/auth.service'
 
 export default {
   name: 'FeedApp',
@@ -16,7 +19,9 @@ export default {
     AppHeader,
     AppFooter,
   },
-  created() {
+  async created() {
+    const {authenticated} = await authService.status()
+    if (this.loggedinUser || !authenticated) return
     this.$store.dispatch({type: 'userStore/loadLoggedinUser'})
   },
   computed: {
@@ -29,6 +34,16 @@ export default {
 <style lang="scss" scoped>
 .feed-app {
   padding-top: $desktop-nav-height;
+
+  .feed-app-main-content {
+    max-width: $max-content-width;
+    min-width: $max-content-width;
+    margin: 0 auto;
+
+    @include respond(phone) {
+      min-width: 100%;
+    }
+  }
 
   @include respond(phone) {
     padding-bottom: $footer-nav-height;

@@ -1,7 +1,7 @@
 <template>
   <article class="post-card">
     <div class="post-card-header">
-      <router-link class="post-card-user-details" :to="`${post.creator.nickname}`">
+      <router-link class="post-card-user-details" :to="{name: 'user-details', params: {id: post.creator.username}}">
         <i class="post-card-user-avatar far fa-user-circle"></i> 
         {{post.creator.fullname}}
       </router-link>

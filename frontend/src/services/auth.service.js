@@ -49,7 +49,7 @@ function _createUser(userCred) {
   const user = {
     _id: makeId(10),
     fullname: userCred.fullname,
-    username: userCred.fullname.replace(' ', '_'),
+    username: userCred.username.toLowerCase(),
     profileImg: userCred.profileImg,
     email: userCred.email,
     createdAt: getDateISO(),
