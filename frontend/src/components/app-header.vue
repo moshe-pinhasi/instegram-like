@@ -1,7 +1,7 @@
 <template>
   <nav class="app-header">
     <div class="app-header-content">
-      <div class="logo"></div>
+      <div class="app-logo"><h1>Instagem</h1></div>
       <div class="app-header-actions">
         <i class="fas fa-home hide-for-phone"></i>
         <i class="far fa-plus-square"></i>
@@ -38,6 +38,11 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    .app-logo {
+      font-family: $logo-font-family;
+      letter-spacing: 4px;
+    }
   }
 
   .app-header-actions {
