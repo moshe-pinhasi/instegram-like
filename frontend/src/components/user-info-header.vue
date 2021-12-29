@@ -5,14 +5,21 @@
     </div>
     <section class="user-info-details">
       <div>
-        <h3 class="user-info-name">{{user.fullname}}</h3>
-        <button class="btn btn-outline btn-sm">Follow</button>
+        <h3 class="user-info-username">{{user.username}}</h3>
+        <button v-if="loggedinUser && (user.username !== loggedinUser.username)" class="btn btn-outline btn-sm" @click="updateFriendshipStatus">
+          {{followBtn}}
+        </button>
+
+        <button v-if="loggedinUser && (user.username === loggedinUser.username)" class="btn btn-outline btn-sm">
+          Edit Profile
+        </button>
       </div>
       <ul class="user-statistics">
         <li><span>{{user.totalPosts}}</span> posts</li>
         <li><span>{{user.followers}}</span> followers</li>
         <li><span>{{user.following}}</span> following</li>
       </ul>
+      <h3 class="user-info-name">{{user.fullname}}</h3>
     </section>
   </header>
 </template>
@@ -24,6 +31,19 @@ export default {
     user: {
       type: Object,
       required: true,
+    }
+  },
+  computed: {
+    followBtn() {
+      return this.user.friendshipStatus.following ? 'Unfollow' : 'Follow'
+    },
+    loggedinUser() {
+      return this.$store.getters['userStore/loggedinUser']
+    },
+  },
+  methods: {
+    updateFriendshipStatus() {
+      this.$emit('friendship-status', {follow: this.followBtn === 'Follow'})
     }
   }
 }

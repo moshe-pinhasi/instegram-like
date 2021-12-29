@@ -46,7 +46,7 @@ function get(filterBy = {}) {
           }
         })
   
-  console.log('posts', posts);
+  // console.log('posts', posts);
   return Promise.resolve(posts)
 }
 
@@ -64,7 +64,8 @@ function getUserInfo(userId) {
     ...user,
     following: userFollow.filter(uf => uf.userId === userId).length, // number of the users the userId follow
     followers: userFollow.filter(uf => uf.followId === userId).length, // number of the users whose follow userId
-    totalPosts: posts.filter(p => p.userId === userId).length
+    totalPosts: posts.filter(p => p.userId === userId).length,
+    friendshipStatus: _getFriendshipStatus(userId)
   }
   return Promise.resolve(res)
 }
@@ -108,18 +109,24 @@ function _getCommentedByUsers(postId, max = 2) {
   const usersMap = arrayToMap(users)
 
   const {user} = storageService.get('session') || {}
-  const commentedByCurrentUser = 
-    postComment
-      .filter(pc => pc.postId === postId && pc.userId === user._id)
-      .map(pc => {
-        return {
-          creator: _getCreatorObject(user),
-          comment: pc.comment
-        }
-      })
 
-  if (commentedByCurrentUser.length > 0) return commentedByCurrentUser
+  if (user) { // find the comments added by current loggedin user
+    const commentedByCurrentUser = 
+      postComment
+        .filter(pc => pc.postId === postId && pc.userId === user._id)
+        .map(pc => {
+          return {
+            creator: _getCreatorObject(user),
+            comment: pc.comment
+          }
+        })
+  
+    if (commentedByCurrentUser.length > 0) { // if user added comments, return his comments
+      return commentedByCurrentUser
+    }
+  }
 
+  // return general comments
   return postComment
             .filter(pc => pc.postId === postId)
             .slice(0, max)
@@ -139,4 +146,14 @@ function _getFollowing() {
   const following = userFollow.filter(uf => uf.userId === user._id)  
 
   return following
+}
+
+function _getFriendshipStatus(followId) {
+  const {user} = storageService.get('session') || {}
+  if (!user) return null
+  
+  const userFollow = storageService.get('userFollow')
+  const following = !!userFollow.find(uf => uf.userId === user._id && uf.followId === followId)
+  
+  return {following}
 }

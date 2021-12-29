@@ -2,20 +2,20 @@ import {storageService} from './storage.service'
 import {makeId, getDateISO} from './util.service'
 
 export const userService  = {
-  // get,
+  get,
   getCurrent,
   follow,
   unfollow,
 }
 
-// function get(filterBy = {}) {
-//   const users = storageService.get('user')
-//   const user = users.filter(user => user.username === filterBy.username).pop()
+function get(filterBy = {}) {
+  const users = storageService.get('user')
+  const user = users.filter(user => user.username === filterBy.username).pop()
 
-//   if (!user) return Promise.reject('User not found!')
+  if (!user) return Promise.reject('User not found!')
 
-//   return Promise.resolve(user)
-// }
+  return Promise.resolve(user)
+}
 
 function getCurrent() {
   const session = storageService.get('session') || {}

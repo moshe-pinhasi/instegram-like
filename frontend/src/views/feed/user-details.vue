@@ -3,7 +3,8 @@
     <h1 v-if="loading">loading user details...</h1>
     <h1 v-if="!loading && !user">Opsss got some error...</h1>
     <div v-if="user" class="user-details-content">
-      <user-info-header :user="user" />
+      <user-info-header @friendship-status="followUser" :user="user" />
+      <hr />
       <user-posts :posts="posts" />
     </div>
   </section>
@@ -41,6 +42,17 @@ export default {
     } finally {
       this.loading = false
     }
+  },
+  methods: {
+    followUser({follow}) {
+      if (follow) {
+        this.$store.dispatch({type: 'userStore/followUser', followId: this.user._id})
+        this.user.friendshipStatus = {following: true}
+      } else {
+        this.$store.dispatch({type: 'userStore/unfollowUser', followId: this.user._id})
+        this.user.friendshipStatus = {following: false}
+      }
+    }
   }
 }
 </script>
@@ -49,8 +61,8 @@ export default {
   margin: 20px 0;
 
   .user-details-content {
-    > :first-child {
-      margin: 0 0 4rem 0;
+    hr {
+      margin: 4rem 0;
     }
   }
 }

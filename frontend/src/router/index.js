@@ -34,6 +34,11 @@ const routes = [
         name: 'signup-index',
         component: () => import(/* webpackChunkName: "signup-index" */ '../views/auth/signup-index.vue'),
       },
+      {
+        path: 'logout',
+        name: 'logout-index',
+        component: () => import(/* webpackChunkName: "logout-index" */ '../views/auth/logout-index.vue'),
+      },
       // {
       //   path: '/*',
       //   redirect: {name: 'login-index'}

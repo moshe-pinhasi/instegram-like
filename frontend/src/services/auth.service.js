@@ -27,7 +27,7 @@ function signup(userCred) {
 
 function login(userCred) {
   const users = storageService.get('user')
-  const user = users.filter(u => u.usernam === userCred.username).pop()
+  const user = users.find(u => u.username === userCred.username)
   if (!user) {
     return Promise.reject({
       code: 401, 
@@ -36,7 +36,7 @@ function login(userCred) {
     })
   }
   
-  storageService.save('session', {user})
+  storageService.save('session', {user: copy(user)})
   return Promise.resolve({user: copy(user)})
 }
 
