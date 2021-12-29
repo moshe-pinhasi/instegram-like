@@ -81,15 +81,6 @@ const actions = {
 
 const getters = {
   posts: state => state.posts
-  
-  // posts: (state, getters, rootState, rootGetters) => {
-  //   return state.posts.map(post => {
-  //     return {
-  //       ...post,
-  //       isFollowing: rootGetters['userStore/userFollowing'][post.creator._id]
-  //     }
-  //   })
-  // }
 };
 
 export const feedStore = {
