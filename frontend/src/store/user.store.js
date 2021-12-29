@@ -21,13 +21,14 @@ const actions = {
       console.error(e)
     }
   },
-  async followUser({dispatch}, {followId}) {
-    await userService.follow(followId)
-    dispatch({type: 'feedStore/followStatus', friendshipStatus: {userId: followId, following: true}}, {root: true})
-  },
-  async unfollowUser({dispatch}, {followId}) {
-    await userService.unfollow(followId)
-    dispatch({type: 'feedStore/followStatus', friendshipStatus: {userId: followId, following: false}}, {root: true})
+  async updateFriendshipStatus({dispatch}, {followId, following}) {
+    if (following) {
+      await userService.follow(followId)
+    } else {
+      await userService.unfollow(followId)  
+    }
+
+    dispatch({type: 'feedStore/followStatus', friendshipStatus: {userId: followId, following}}, {root: true})
   }
 };
 

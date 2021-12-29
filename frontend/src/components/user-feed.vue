@@ -29,12 +29,8 @@ export default {
     addLike(post) {
       this.$store.dispatch({type: 'feedStore/postLike', post})
     },
-    followUser({status, post}) {
-      if (status === 'follow') {
-        this.$store.dispatch({type: 'userStore/followUser', followId: post.creator._id})
-      } else {
-        this.$store.dispatch({type: 'userStore/unfollowUser', followId: post.creator._id})
-      }
+    followUser({following, post}) {
+      this.$store.dispatch({type: 'userStore/updateFriendshipStatus', followId: post.creator._id, following})
     }
   }
 }

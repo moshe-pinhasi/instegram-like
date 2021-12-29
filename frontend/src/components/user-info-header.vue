@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     updateFriendshipStatus() {
-      this.$emit('friendship-status', {follow: this.followBtn === 'Follow'})
+      this.$emit('friendship-status', {following: this.followBtn === 'Follow'})
     }
   }
 }

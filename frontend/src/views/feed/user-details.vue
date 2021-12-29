@@ -34,14 +34,9 @@ export default {
     this.loadUser()
   },
   methods: {
-    followUser({follow}) {
-      if (follow) {
-        this.$store.dispatch({type: 'userStore/followUser', followId: this.user._id})
-        this.user.friendshipStatus = {following: true}
-      } else {
-        this.$store.dispatch({type: 'userStore/unfollowUser', followId: this.user._id})
-        this.user.friendshipStatus = {following: false}
-      }
+    async followUser({following}) {
+      await this.$store.dispatch({type: 'userStore/updateFriendshipStatus', followId: this.user._id, following})
+      this.user.friendshipStatus = {following}
     },
     async loadUser() {
       try {

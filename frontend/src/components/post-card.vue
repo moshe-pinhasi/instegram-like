@@ -6,12 +6,12 @@
         {{post.creator.fullname}} <span class="post-suggested-tag" v-if="!post.friendshipStatus.following">Suggested</span>
       </router-link>
       <div class="post-card-user-actions">
-         <app-menu open-at="right" @select="$emit('friendship-status', {status: $event, post})">
+         <app-menu open-at="right" @select="$emit('friendship-status', {following: $event, post})">
           <template #toggler>
             <i class="fas fa-ellipsis-h"></i>
           </template>
-          <app-menu-item v-if="post.friendshipStatus.following" item="unfollow">Unfollow</app-menu-item>
-          <app-menu-item v-else item="follow">Follow</app-menu-item>
+          <app-menu-item v-if="post.friendshipStatus.following" :item="false">Unfollow</app-menu-item>
+          <app-menu-item v-else :item="true">Follow</app-menu-item>
         </app-menu>
       </div>
     </div>
