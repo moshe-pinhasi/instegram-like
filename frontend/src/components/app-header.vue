@@ -19,8 +19,11 @@
                          :to="{name: 'user-details', params: {id: loggedinUser.username}}"
                          class="app-menu-item">Profile</router-link>
             <router-link tag="li" 
+                         :to="{name: 'user-details', params: {id: loggedinUser.username}}"
+                         class="app-menu-item">Settings</router-link>
+            <router-link tag="li" 
                          :to="{name: 'logout-index'}"
-                         class="app-menu-item">Logout</router-link>
+                         class="app-menu-item logout">Logout</router-link>
           </template>
         </app-menu>
       </div>
@@ -82,6 +85,10 @@ export default {
       margin: 0 1rem;
       font-size: 2rem;
       cursor: pointer;
+    }
+
+    .app-menu-item.logout {
+      border-top: 1px solid $gray-400;
     }
   }
 }
