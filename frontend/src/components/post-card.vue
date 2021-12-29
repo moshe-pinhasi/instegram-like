@@ -15,7 +15,7 @@
     <section class="post-card-details">
       <div class="post-card-text">{{post.text}}</div>
       <div class="post-card-actions">
-        <i class="far fa-heart" :class="{'liked': post.likedByUser}" @click="$emit('liked', post)"></i>
+        <i class="far fa-heart" :class="{'fas liked': post.likedByUser}" @click="$emit('liked', post)"></i>
         <i class="far fa-comment"></i>
         <i class="far fa-paper-plane"></i>
       </div>
