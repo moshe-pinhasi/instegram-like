@@ -8,7 +8,6 @@
 
 <script>
 import PostCard from '@/components/post-card.vue'
-import {postService} from '@/services/post.service'
 
 export default {
   name: 'UserFeed',
@@ -26,8 +25,7 @@ export default {
   methods: {
     async addComment({post, comment}) {
       console.log(`adding comment ${comment} to post id `, post._id);
-      // const savedComment = await postService.addComment(post._id, comment)
-      // Update the post in the feedStore
+      this.$store.dispatch({type: 'feedStore/addPostComment', data: {post, comment}})
     },
     async addLike(post) {
       this.$store.dispatch({type: 'feedStore/postLike', post})

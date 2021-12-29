@@ -25,8 +25,10 @@
           View all {{post.comments}} comments
         </div>
         <div class="post-card-comment" v-if="post.commentedBy.length > 0">
-          <span class="post-card-comment-creator">{{post.commentedBy[0].creator.fullname}}</span>
-          {{post.commentedBy[0].comment}}
+          <div class="post-card-comment-row" v-for="(comment, idx) in post.commentedBy" :key="idx">
+            <span class="post-card-comment-creator">{{comment.creator.fullname}}</span>
+            {{comment.comment}}
+          </div>
         </div>
       </div>
       <div class="post-card-created">{{post.createdAt | timeSince}}</div>
@@ -130,6 +132,9 @@ export default {
 
   .post-card-comment {
     color: initial;
+    > div {
+      margin: 0 0 .3rem 0;
+    }
   }
 
   .post-card-comment-creator {

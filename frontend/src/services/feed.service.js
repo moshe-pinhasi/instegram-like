@@ -20,45 +20,24 @@ function get(filterBy = {}) {
   const users = storageService.get('user')
   const usersMap = arrayToMap(users)
 
-  const postLike = storageService.get('postLike')
-  const postComment = storageService.get('postComment')
-
   const {user} = storageService.get('session') || {}
-  let postLikedByCurrentUser = {}
-  if (user) {
-    postLikedByCurrentUser = 
-      postLike
-        .filter(pl => pl.userId === user._id)
-        .reduce((acc, pl) => {
-          acc[pl.postId] = true
-          return acc
-        }, {})
-  }
-
-  const posts = feed.map(post => postsMap[post.postId])
-      .map(post => {
-        const likedBy = postLike.filter(pl => pl.postId === post._id).slice(0, 3).map(pl => usersMap[pl.userId])
-        // if user added comment to this post return this comment only, otherwise, do this:  
-        const commentedBy = 
-          postComment
-            .filter(pc => pc.postId === post._id)
-            .slice(0, 2)
-            .map(pc => {
-              return {
-                creator: usersMap[pc.userId],
-                comment: pc.comment
-              }
-            })
-        return {
-          ...post,
-          creator: usersMap[post.userId],
-          likedByUser: !!postLikedByCurrentUser[post._id],
-          likedBy,
-          commentedBy
-        }
-      })
+  const postLikedByCurrentUser = 
+    user ? arrayToMap(_getPostsLikedByCurrentUser(), 'postId') : {}
   
-  console.log('posts', posts);
+  const posts = 
+      feed
+        .map(post => postsMap[post.postId]) // gettings the posts
+        .map(post => { // converting it to match the cards
+          return {
+            ...post,
+            creator: _getCreatorObject(usersMap[post.userId]),
+            likedByUser: !!postLikedByCurrentUser[post._id],
+            likedBy: _getLikedByUsers(post._id),
+            commentedBy: _getCommentedByUsers(post._id)
+          }
+        })
+  
+  // console.log('posts', posts);
   return Promise.resolve(posts)
 }
 
@@ -92,4 +71,54 @@ function getUserMedia(userId, page) {
   const userPosts = posts.filter(post => post.userId === userId)
 
   return Promise.resolve(userPosts)
+}
+
+function _getCreatorObject(user) {
+  const {_id, fullname, profileImg, username} = user
+  return {_id, fullname, profileImg, username}
+}
+
+function _getPostsLikedByCurrentUser() {
+  const {user} = storageService.get('session') || {}
+  if (!user) return null
+
+  const postLike = storageService.get('postLike')
+  return postLike.filter(pl => pl.userId === user._id)
+}
+
+function _getLikedByUsers(postId, max = 3) {
+  const postLike = storageService.get('postLike')
+  const users = storageService.get('user')
+  const usersMap = arrayToMap(users)
+  return postLike.filter(pl => pl.postId === postId).slice(0, max).map(pl => usersMap[pl.userId])
+}
+
+function _getCommentedByUsers(postId, max = 2) {
+  const postComment = storageService.get('postComment')
+  const users = storageService.get('user')
+  const usersMap = arrayToMap(users)
+
+  const {user} = storageService.get('session') || {}
+  const commentedByCurrentUser = 
+    postComment
+      .filter(pc => pc.postId === postId && pc.userId === user._id)
+      .map(pc => {
+        return {
+          creator: _getCreatorObject(user),
+          comment: pc.comment
+        }
+      })
+
+  if (commentedByCurrentUser.length > 0) return commentedByCurrentUser
+
+  return postComment
+            .filter(pc => pc.postId === postId)
+            .slice(0, max)
+            .map(pc => {
+              return {
+                creator: _getCreatorObject(usersMap[pc.userId]),
+                comment: pc.comment
+              }
+            })
+
 }

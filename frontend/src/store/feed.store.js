@@ -12,8 +12,8 @@ const mutations = {
   setPostLike(state, post) {
     state.posts = state.posts.map(p => {
       if (p._id === post._id) {
-        post.likes++
-        post.likedByUser = true
+        p.likes++
+        p.likedByUser = true
       }
       return p
     })
@@ -22,8 +22,17 @@ const mutations = {
   setPostUnlike(state, post) {
     state.posts = state.posts.map(p => {
       if (p._id === post._id) {
-        post.likes--
-        post.likedByUser = false
+        p.likes--
+        p.likedByUser = false
+      }
+      return p
+    })
+  },
+  setPostComment(state, {post, commentedBy}) {
+    state.posts = state.posts.map(p => {
+      if (p._id === post._id) {
+        p.comments++
+        p.commentedBy.push(commentedBy)
       }
       return p
     })
@@ -37,12 +46,22 @@ const actions = {
   },
   async postLike({commit}, {post}) {
     const {status} = await postService.like(post._id)
-    console.log('status', status);
     if (status === 'like') {
       commit('setPostLike', post)
     } else {
       commit('setPostUnlike', post)
     }
+  },
+  async addPostComment({commit, rootState}, {data}) {
+    const {post, comment} = data
+    await postService.comment(post._id, comment)
+    const {_id, fullname, profileImg, username} = rootState.userStore.loggedinUser
+    const commentedBy = {
+      comment,
+      creator: {_id, fullname, profileImg, username}
+    }
+    
+    commit('setPostComment', {post, commentedBy})
   }
 };
 

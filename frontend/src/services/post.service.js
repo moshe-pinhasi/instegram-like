@@ -7,7 +7,8 @@ import {
 
 export const postService  = {
   get,
-  like
+  like,
+  comment
 }
 
 function get(filterBy = {}) {
@@ -45,10 +46,22 @@ function like(postId) {
   return Promise.resolve({status: 'like'})
 }
 
+// POST /post/:postId/comment
+function comment(postId, comment) {
+  const {user} = storageService.get('session')
+
+  let postComment = storageService.get('postComment')
+  postComment.push(_createPostComment(user._id, postId, comment))
+
+  const post = _getPostById(postId)
+  post.comments++
+  _savePost(post)
+  
+  storageService.save('postComment', postComment)
+  return Promise.resolve({status: 'ok'})
+}
 
 function _createPostLike(userId, postId) {
-  
-
   const postLike = {
     _id: makeId(10),
     postId,
@@ -58,4 +71,28 @@ function _createPostLike(userId, postId) {
   }
 
   return postLike
+}
+
+function _createPostComment(userId, postId, comment) {
+  const postComment = {
+    _id: makeId(10),
+    postId,
+    userId,
+    comment,
+    createdAt: getDateISO(),
+    updatedAt: getDateISO(),
+  }
+
+  return postComment
+}
+
+function _getPostById(postId) {
+  const posts = storageService.get('post')
+  return posts.filter(p => p._id === postId).pop()
+}
+
+function _savePost(post) {
+  let posts = storageService.get('post')
+  posts = posts.map(p => (p._id === post._id) ? post : p)
+  storageService.save('post', posts)
 }
