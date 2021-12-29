@@ -33,8 +33,6 @@ function get(filterBy = {}) {
           acc[pl.postId] = true
           return acc
         }, {})
-
-    console.log('postLikedByCurrentUser', postLikedByCurrentUser);
   }
 
   const posts = feed.map(post => postsMap[post.postId])
