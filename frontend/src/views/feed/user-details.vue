@@ -30,18 +30,8 @@ export default {
       posts: []
     }
   },
-  async created() {
-    try {
-      this.loading = true
-      const username = this.$route.params.id
-      const user = await userService.get({username})
-      this.user = await feedService.getUserInfo(user._id)
-      this.posts = await feedService.getUserMedia(this.user._id)
-    } catch (e) {
-      logError('Could not load user. Please try again later', e);
-    } finally {
-      this.loading = false
-    }
+  created() {
+    this.loadUser()
   },
   methods: {
     followUser({follow}) {
@@ -52,6 +42,24 @@ export default {
         this.$store.dispatch({type: 'userStore/unfollowUser', followId: this.user._id})
         this.user.friendshipStatus = {following: false}
       }
+    },
+    async loadUser() {
+      try {
+        this.loading = true
+        const username = this.$route.params.id
+        const user = await userService.get({username})
+        this.user = await feedService.getUserInfo(user._id)
+        this.posts = await feedService.getUserMedia(this.user._id)
+      } catch (e) {
+        logError('Could not load user. Please try again later', e);
+      } finally {
+        this.loading = false
+      }
+    },
+  },
+  watch: {
+    '$route.params.id'() {
+      this.loadUser()
     }
   }
 }
