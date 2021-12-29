@@ -32,7 +32,13 @@ function getCurrent() {
 
 function follow(followId) {
   const {user} = storageService.get('session') || {}
-  if (!user) return Promise.reject('user must be loggedin!')
+  if (!user) return Promise.reject(
+    {
+      code: 401, 
+      errors: {message: 'No loggedin user found!'},
+      name: "Unauthorized"
+    }
+  )
 
   let userFollow = storageService.get('userFollow')
   const newUserFollow = _createUserFollowers(user._id, followId)
@@ -44,7 +50,13 @@ function follow(followId) {
 
 function unfollow(followId) {
   const {user} = storageService.get('session') || {}
-  if (!user) return Promise.reject('user must be loggedin!')
+  if (!user) return Promise.reject(
+    {
+      code: 401, 
+      errors: {message: 'No loggedin user found!'},
+      name: "Unauthorized"
+    }
+  )
   
   let userFollow = storageService.get('userFollow')
   userFollow = userFollow.filter(uf => uf.userId !== user._id || followId !== uf.followId)  

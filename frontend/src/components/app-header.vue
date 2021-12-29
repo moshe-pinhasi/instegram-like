@@ -36,14 +36,11 @@
 <script>
 import AppMenu from '@/components/common/app-menu/app-menu.vue'
 import AppMenuItem from "@/components/common/app-menu/app-menu-item.vue";
-
 export default {
   name: 'AppHeader',
   components: {
     AppMenu,
     AppMenuItem,
-  },
-  props: {
   },
   computed: {
     loggedinUser() {

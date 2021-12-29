@@ -3,11 +3,15 @@ import {arrayToMap} from '@/services/util.service'
 
 const state = {
   loggedinUser: null,
+  showLoggedinAlert: false
 };
 
 const mutations = {
   setLoggedinUser(state, loggedinUser) {
     state.loggedinUser = loggedinUser
+  },
+  showLoggedinAlert(state, show) {
+    state.showLoggedinAlert = show
   },
 };
 
@@ -21,20 +25,31 @@ const actions = {
       console.error(e)
     }
   },
-  async updateFriendshipStatus({dispatch}, {followId, following}) {
-    if (following) {
-      await userService.follow(followId)
-    } else {
-      await userService.unfollow(followId)  
+  async updateFriendshipStatus({commit, dispatch}, {followId, following}) {
+    try {
+      if (following) {
+        await userService.follow(followId)
+      } else {
+        await userService.unfollow(followId)  
+      }
+  
+      dispatch({type: 'feedStore/followStatus', friendshipStatus: {userId: followId, following}}, {root: true})
+    } catch(err) {
+      if (err.code === 401) {
+        commit('showLoggedinAlert', true)
+        setTimeout(() => {
+          commit('showLoggedinAlert', false)
+        }, 3000);
+      } else {
+        throw err
+      }
     }
-
-    dispatch({type: 'feedStore/followStatus', friendshipStatus: {userId: followId, following}}, {root: true})
   }
 };
 
 const getters = {
   loggedinUser: (state) => state.loggedinUser,
-  userFollowing: (state) => state.following ? arrayToMap(state.following, 'followId') : {},
+  showLoggedinAlert: (state) => state.showLoggedinAlert,
 };
 
 export const userStore = {
