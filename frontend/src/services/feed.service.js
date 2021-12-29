@@ -1,5 +1,5 @@
 import {storageService} from './storage.service'
-import {arrayToMap} from './util.service'
+import {arrayToMap} from '@/services/util.service'
 
 export const feedService  = {
   get,
@@ -23,7 +23,13 @@ function get(filterBy = {}) {
   const {user} = storageService.get('session') || {}
   const postLikedByCurrentUser = 
     user ? arrayToMap(_getPostsLikedByCurrentUser(), 'postId') : {}
-  
+
+  const following = _getFollowing()
+  let followingMap = {}
+  if (following) {
+    followingMap = arrayToMap(following, 'followId')
+  }
+
   const posts = 
       feed
         .map(post => postsMap[post.postId]) // gettings the posts
@@ -33,11 +39,14 @@ function get(filterBy = {}) {
             creator: _getCreatorObject(usersMap[post.userId]),
             likedByUser: !!postLikedByCurrentUser[post._id],
             likedBy: _getLikedByUsers(post._id),
-            commentedBy: _getCommentedByUsers(post._id)
+            commentedBy: _getCommentedByUsers(post._id),
+            friendshipStatus: {
+              following: followingMap[post.userId]
+            }
           }
         })
   
-  // console.log('posts', posts);
+  console.log('posts', posts);
   return Promise.resolve(posts)
 }
 
@@ -121,4 +130,13 @@ function _getCommentedByUsers(postId, max = 2) {
               }
             })
 
+}
+
+function _getFollowing() {
+  const {user} = storageService.get('session') || {}
+  if (!user) return null
+  const userFollow = storageService.get('userFollow')
+  const following = userFollow.filter(uf => uf.userId === user._id)  
+
+  return following
 }

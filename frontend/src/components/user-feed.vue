@@ -1,7 +1,7 @@
 <template>
   <ul class="user-feed">
     <li v-for="post in posts" :key="post._id">
-      <post-card :post="post" @add-comment="addComment" @liked="addLike" />
+      <post-card :post="post" @add-comment="addComment" @liked="addLike" @friendship-status="followUser" />
     </li>
   </ul>
 </template>
@@ -23,12 +23,18 @@ export default {
     }
   },
   methods: {
-    async addComment({post, comment}) {
-      console.log(`adding comment ${comment} to post id `, post._id);
+    addComment({post, comment}) {
       this.$store.dispatch({type: 'feedStore/addPostComment', data: {post, comment}})
     },
-    async addLike(post) {
+    addLike(post) {
       this.$store.dispatch({type: 'feedStore/postLike', post})
+    },
+    followUser({status, post}) {
+      if (status === 'follow') {
+        this.$store.dispatch({type: 'userStore/followUser', followId: post.creator._id})
+      } else {
+        this.$store.dispatch({type: 'userStore/unfollowUser', followId: post.creator._id})
+      }
     }
   }
 }

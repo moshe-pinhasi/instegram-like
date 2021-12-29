@@ -62,11 +62,32 @@ const actions = {
     }
     
     commit('setPostComment', {post, commentedBy})
+  },
+  followStatus({commit, state}, {friendshipStatus}) {
+    const posts = state.posts.map(post => {
+      if (post.creator._id !== friendshipStatus.userId) return post
+
+      return {
+        ...post,
+        friendshipStatus: {
+          following: friendshipStatus.following
+        }
+      }
+    })
+
+    commit('setPosts', posts)
   }
 };
 
 const getters = {
-  posts: (state) => state.posts
+  posts: (state, getters, rootState, rootGetters) => {
+    return state.posts.map(post => {
+      return {
+        ...post,
+        isFollowing: rootGetters['userStore/userFollowing'][post.creator._id]
+      }
+    })
+  }
 };
 
 export const feedStore = {
