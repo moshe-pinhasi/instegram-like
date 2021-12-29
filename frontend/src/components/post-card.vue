@@ -6,7 +6,12 @@
         {{post.creator.fullname}}
       </router-link>
       <div class="post-card-user-actions">
-        <i class="fas fa-ellipsis-h"></i>
+         <app-menu open-at="right">
+          <template #toggler>
+            <i class="fas fa-ellipsis-h"></i>
+          </template>
+          <app-menu-item item="follow">Follow</app-menu-item>
+        </app-menu>
       </div>
     </div>
     <div class="post-card-media">
@@ -42,11 +47,15 @@
 <script>
 import MediaImage from "@/components/media-image.vue"
 import PostCommentForm from "@/components/post-comment-form.vue"
+import AppMenu from '@/components/common/app-menu/app-menu.vue'
+import AppMenuItem from "@/components/common/app-menu/app-menu-item.vue";
 
 export default {
   components: {
     MediaImage,
-    PostCommentForm
+    PostCommentForm,
+    AppMenu,
+    AppMenuItem
   },
   props: {
     post: {

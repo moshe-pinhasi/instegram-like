@@ -28,7 +28,8 @@
     position: absolute;
     min-width: 18rem;
     box-shadow: $card-box-shadow;
-    
+    z-index: 10;
+
     &.hide-shadow {
       box-shadow: none;
     }
@@ -56,5 +57,13 @@
   &:hover {
     background-color: $background-color-base;
     cursor: pointer;
+  }
+
+  &:first-child:hover {
+    border-radius: 5px 5px 0 0;
+  }
+
+  &:last-child:hover {
+    border-radius: 0 0 5px 5px;
   }
 }
