@@ -29,3 +29,5 @@ npm run test:e2e
 ```
 https://docs.cypress.io/api/table-of-contents
 ```
+
+https://www.codercrunch.com/design/634265/designing-instagram
