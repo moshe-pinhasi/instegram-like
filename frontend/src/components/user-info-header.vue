@@ -1,25 +1,25 @@
 <template>
   <header class="user-info-header">
     <div class="user-profile-pic">
-      <i class="far fa-user-circle"></i>
+      <i class="far fa-user-circle" data-testid="user-details-profile-picture"></i>
     </div>
     <section class="user-info-details">
       <div>
-        <h3 class="user-info-username">{{user.username}}</h3>
-        <button v-if="loggedinUser && (user.username !== loggedinUser.username)" class="btn btn-outline btn-sm" @click="updateFriendshipStatus">
+        <h3 data-testid="user-details-username" class="user-info-username">{{user.username}}</h3>
+        <button data-testid="user-details-follow-btn" v-if="loggedinUser && (user.username !== loggedinUser.username)" class="btn btn-outline btn-sm" @click.prevent="updateFriendshipStatus">
           {{followBtn}}
         </button>
 
-        <button v-if="loggedinUser && (user.username === loggedinUser.username)" class="btn btn-outline btn-sm">
+        <button data-testid="user-details-edit-btn" v-if="loggedinUser && (user.username === loggedinUser.username)" class="btn btn-outline btn-sm">
           Edit Profile
         </button>
       </div>
       <ul class="user-statistics">
-        <li><span>{{user.totalPosts}}</span> posts</li>
-        <li><span>{{user.followers}}</span> followers</li>
-        <li><span>{{user.following}}</span> following</li>
+        <li data-testid="user-details-posts"><span>{{user.totalPosts}}</span> posts</li>
+        <li data-testid="user-details-followers"><span>{{user.followers}}</span> followers</li>
+        <li data-testid="user-details-following"><span>{{user.following}}</span> following</li>
       </ul>
-      <h3 class="user-info-name">{{user.fullname}}</h3>
+      <h3 data-testid="user-details-fullname" class="user-info-name">{{user.fullname}}</h3>
     </section>
   </header>
 </template>
