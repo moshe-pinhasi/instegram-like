@@ -29,15 +29,6 @@ body {
     font-family: $main-font-family;
     font-size: 1.6rem;
     display: flex;
-
-
-    @include respond(tab-land) { // width < 1200?
-        font-size: 1.4rem;
-    }
-
-    @include respond(tab-port) { // width < 900?
-        font-size: 1.2rem;
-    }
 }
 
 ol, ul, li {

@@ -15,7 +15,7 @@ import './assets/scss/main.scss'
 Vue.config.productionTip = false
 
 import {createData} from "../model/data"
-// createData()
+createData()
 
 document.body.style['min-height'] = window.innerHeight + "px"
 

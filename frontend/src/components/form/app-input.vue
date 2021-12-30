@@ -8,6 +8,7 @@
         </div>
         <input :type="type"
               class="input"
+              :name="placeholder"
               @blur="onBlur"
               @focus="focused = true"
               @input="$emit('input', input)"

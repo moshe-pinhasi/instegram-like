@@ -21,7 +21,7 @@
         </div>
 
         <div class="row">
-          <button class="btn btn-primary full-width">
+          <button data-testid="btn-submit" class="btn btn-primary full-width">
             <app-spinner v-if="loading" class="spinner" />
             Sign up
           </button>
@@ -66,6 +66,15 @@ export default {
   methods: {
     isValidate(user) {
       const errors = {}
+
+      if (!user.email) {
+        errors.email = "This field is required."
+      }
+
+      if (!user.fullname) {
+        errors.fullname = "This field is required."
+      }
+
       if (!user.username) {
         errors.username = "This field is required."
       }

@@ -12,13 +12,13 @@
         </div>
 
         <div class="row">
-          <button class="btn btn-primary full-width">
+          <button data-testid="btn-submit" class="btn btn-primary full-width">
             <app-spinner v-if="loading" class="spinner" />
             Log in
           </button>
         </div>
         <div class="row">
-          <p class="txt-error">{{errors.message}}</p>
+          <p data-testid="login-general-error" class="txt-error">{{errors.message}}</p>
         </div>
       </form>
     </app-card>

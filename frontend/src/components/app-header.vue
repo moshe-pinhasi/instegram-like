@@ -8,9 +8,9 @@
         <router-link tag="li" :to="{name: 'feed-index'}">
           <i class="fas fa-home hide-for-phone"></i>
         </router-link>
-        <i class="far fa-plus-square" v-if="loggedinUser"></i>
-        <i class="far fa-heart" v-if="loggedinUser"></i>
-        <i class="far fa-comment-dots" v-if="loggedinUser"></i>
+        <i class="far fa-plus-square" data-testid="app-header-add" v-if="loggedinUser"></i>
+        <i class="far fa-heart" data-testid="app-header-likes" v-if="loggedinUser"></i>
+        <i class="far fa-comment-dots" data-testid="app-header-messages" v-if="loggedinUser"></i>
         <app-menu open-at="right">
           <template #toggler>
             <i class="far fa-user-circle hide-for-phone"></i>
