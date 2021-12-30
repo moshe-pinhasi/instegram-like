@@ -25,10 +25,7 @@ npm run test:unit
 npm run test:e2e
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-### e2e with cucumber and cypress
-https://medium.com/@JoeTann/front-end-tutorial-on-behavior-driven-development-with-cucumber-cypress-and-jest-a7e28c517e1
-
+### e2e with cypress
+```
 https://docs.cypress.io/api/table-of-contents
+```
