@@ -12,66 +12,106 @@ $gray-800: #606266 !default;
 $gray-900: #303133 !default;
 $black:    #000000 !default;
 
-// $teal:    #20c997 !default;
-// $indigo:  #6610f2 !default;
-// $purple:  #6f42c1 !default;
-// $pink:    #d63384 !default;
-// $yellow:  #ffc107 !default;
-// $cyan:    #5cbbf6 !default;
+// $blue: #556ee6;
+// $indigo: #564ab1;
+// $purple: #6f42c1;
+// $pink: #e83e8c;
+// $red: #f46a6a;
+// $orange: #f1734f;
+// $yellow: #f1b44c;
+// $green: #34c38f;
+// $teal: #050505;
+// $cyan: #50a5f1;
 
-$orange-primary:  #E6A23C !default;
-$orange-light-100:  #fdf6ec !default;
-$orange-light-200:  #f5dab1 !default;
-$orange-light-300:  #ebb563 !default;
+$cyan: #409EFF;
+$orange:  #E6A23C !default;
+$red:    #f56c6c !default;
+$green:   #67C23A !default;
 
 // blue
-$blue-primary:    #409EFF !default;
-$blue-light-100:  #ecf5ff !default;
-$blue-light-200:  #c6e2ff !default;
-$blue-light-300:  #b3d8ff !default;
-$blue-light-400:  #66b1ff !default;
+// $blue-100: tint-color($blue, 80%);
+// $blue-200: tint-color($blue, 60%);
+// $blue-300: tint-color($blue, 40%);
+// $blue-400: tint-color($blue, 20%);
+// $blue-500: $blue;
+// $blue-600: shade-color($blue, 20%);
+// $blue-700: shade-color($blue, 40%);
+// $blue-800: shade-color($blue, 60%);
+// $blue-900: shade-color($blue, 80%);
+
+// orange
+$orange-100: tint-color($orange, 80%);
+$orange-200: tint-color($orange, 60%);
+$orange-300: tint-color($orange, 40%);
+$orange-400: tint-color($orange, 20%);
+$orange-500: $orange;
+$orange-600: shade-color($orange, 20%);
+$orange-700: shade-color($orange, 40%);
+$orange-800: shade-color($orange, 60%);
+$orange-900: shade-color($orange, 80%);
+
+// cyan
+$cyan-100: tint-color($cyan, 80%);
+$cyan-200: tint-color($cyan, 60%);
+$cyan-300: tint-color($cyan, 40%);
+$cyan-400: tint-color($cyan, 20%);
+$cyan-500: $cyan;
+$cyan-600: shade-color($cyan, 20%);
+$cyan-700: shade-color($cyan, 40%);
+$cyan-800: shade-color($cyan, 60%);
+$cyan-900: shade-color($cyan, 80%);
 
 // red
-$red-primary:    #f56c6c !default;
-$red-light-100:  #fef0f0 !default;
-$red-light-200:  #fbc4c4 !default;
-$red-light-300:  #f78989 !default;
+$red-100: tint-color($red, 80%);
+$red-200: tint-color($red, 60%);
+$red-300: tint-color($red, 40%);
+$red-400: tint-color($red, 20%);
+$red-500: $red;
+$red-600: shade-color($red, 20%);
+$red-700: shade-color($red, 40%);
+$red-800: shade-color($red, 60%);
+$red-900: shade-color($red, 80%);
+
 
 // green
-$green-primary:   #67C23A !default;
-$green-light-100:  #f0f9eb !default;
-$green-light-200:  #c2e7b0 !default;
-$green-light-300:  #85ce61 !default;
-
+$green-100: tint-color($green, 80%);
+$green-200: tint-color($green, 60%);
+$green-300: tint-color($green, 40%);
+$green-400: tint-color($green, 20%);
+$green-500: $green;
+$green-600: shade-color($green, 20%);
+$green-700: shade-color($green, 40%);
+$green-800: shade-color($green, 60%);
+$green-900: shade-color($green, 80%);
 
 // main colors:
-$primary:             $blue-primary !default;
-$primary-light-100:   $blue-light-100 !default;
-$primary-light-200:   $blue-light-200 !default;
-$primary-light-300:   $blue-light-300 !default;
-$primary-light-400:   $blue-light-400 !default;
+$primary:       $cyan !default;
+$primary-100:   $cyan-100 !default;
+$primary-200:   $cyan-200 !default;
+$primary-300:   $cyan-300 !default;
+$primary-400:   $cyan-400 !default;
 
 // $secondary:     $gray-600 !default;
 
-$success:             $green-primary !default;
-$success-light-100:   $green-light-100 !default;
-$success-light-200:   $green-light-200 !default;
-$success-light-300:   $green-light-300 !default;
+$success:       $green !default;
+$success-100:   $green-100 !default;
+$success-200:   $green-200 !default;
+$success-300:   $green-300 !default;
 
-$info:              $gray-700 !default;
-$info-light-100:   #f4f4f5 !default;
-$info-light-200:   #a6a9ad !default;
-$info-light-300:   #a6a9ad !default;
+$info:         $gray-700 !default;
+$info-100:   #f4f4f5 !default;
+$info-200:   #a6a9ad !default;
+$info-300:   #a6a9ad !default;
 
-$warning:             $orange-primary !default;
-$warning-light-100:   $orange-light-100 !default;
-$warning-light-200:   $orange-light-200 !default;
-$warning-light-300:   $orange-light-300 !default;
+$warning:       $orange !default;
+$warning-100:   $orange-100 !default;
+$warning-200:   $orange-200 !default;
+$warning-300:   $orange-300 !default;
 
-$danger:             $red-primary !default;
-$danger-light-100:   $red-light-100 !default;
-$danger-light-200:   $red-light-200 !default;
-$danger-light-300:   $red-light-300 !default;
+$danger:       $red !default;
+$danger-100:   $red-100 !default;
+$danger-200:   $red-200 !default;
+$danger-300:   $red-300 !default;
 
 
 $border-extra-light:    $gray-100;

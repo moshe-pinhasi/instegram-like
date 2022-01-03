@@ -104,7 +104,7 @@ export default {
   }
 
   .post-suggested-tag {
-    color: $orange-primary;
+    color: $orange;
     margin: 0 1rem;
   }
 
@@ -127,7 +127,7 @@ export default {
       }
 
       &.liked {
-        color: $red-primary;
+        color: $red;
       }
     }
   }

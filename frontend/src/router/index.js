@@ -47,7 +47,6 @@ const routes = [
   },
   {
     path: '/',
-    name: 'feed-app',
     component: FeedApp,
     children: [
       {

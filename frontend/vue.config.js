@@ -8,6 +8,7 @@ module.exports = {
     'style-resources-loader': {
       preProcessor: 'scss',
       patterns: [
+        path.resolve(__dirname, './src/assets/scss/abstracts/_functions.scss'),
         path.resolve(__dirname, './src/assets/scss/abstracts/_variables.scss'),
         path.resolve(__dirname, './src/assets/scss/abstracts/_mixins.scss'),
         path.resolve(__dirname, './src/assets/scss/abstracts/_i18n-mixins.scss'),

@@ -21,10 +21,10 @@
   }
 }
 
-@mixin create-btn-outlined($color, $color-light-100, $color-light-300) {
+@mixin create-btn-outlined($color, $color-100, $color-300) {
   color: $color;
-  background: $color-light-100;
-  border-color: $color-light-300;
+  background: $color-100;
+  border-color: $color-300;
 
   &:hover {
     background: $color;
@@ -38,8 +38,8 @@
 
     &:hover {
       color: $color;
-      background: $color-light-100;
-      border-color: $color-light-300;
+      background: $color-100;
+      border-color: $color-300;
     }
   }
 }
@@ -68,8 +68,8 @@
 
   &:hover {
     color: $primary;
-    border-color: $blue-light-200;
-    background-color: $blue-light-100;
+    border-color: $primary-200;
+    background-color: $primary-100;
   }
 
   &.btn-disabled {
@@ -110,23 +110,23 @@
 
 // defaults btns
 .btn-primary {
-  @include create-default-btn($primary, $primary-light-400);
+  @include create-default-btn($primary, $primary-400);
 }
 
 .btn-success {
-  @include create-default-btn($success, $success-light-300);
+  @include create-default-btn($success, $success-300);
 }
 
 .btn-danger {
-  @include create-default-btn($danger, $danger-light-300);
+  @include create-default-btn($danger, $danger-300);
 }
 
 .btn-warning {
-  @include create-default-btn($warning, $warning-light-300);
+  @include create-default-btn($warning, $warning-300);
 }
 
 .btn-info {
-  @include create-default-btn($info, $info-light-300);
+  @include create-default-btn($info, $info-300);
 }
 
 // outline btns
@@ -138,23 +138,23 @@
   }
 
   &.btn-primary {
-    @include create-btn-outlined($primary, $primary-light-100, $primary-light-200);
+    @include create-btn-outlined($primary, $primary-100, $primary-200);
   }
 
   &.btn-success {
-    @include create-btn-outlined($success, $success-light-100, $success-light-200);
+    @include create-btn-outlined($success, $success-100, $success-200);
   }
 
   &.btn-danger {
-    @include create-btn-outlined($danger, $danger-light-100, $danger-light-200);
+    @include create-btn-outlined($danger, $danger-100, $danger-200);
   }
 
   &.btn-warning {
-    @include create-btn-outlined($warning, $warning-light-100, $warning-light-200);
+    @include create-btn-outlined($warning, $warning-100, $warning-200);
   }
 
   &.btn-info {
-    @include create-btn-outlined($info, $info-light-100, $info-light-200);
+    @include create-btn-outlined($info, $info-100, $info-200);
   }
 }
 
@@ -181,7 +181,7 @@
   padding-right: 0;
 
   &:hover {
-    color: $blue-light-400;
+    color: tint-color($primary, 20%);
     border-color: transparent;
     background-color: transparent;
   }
@@ -190,7 +190,7 @@
     color: $success;
 
     &:hover {
-      color: $success-light-300;
+      color: $success-300;
     }
   }
 
@@ -198,7 +198,7 @@
     color: $danger;
 
     &:hover {
-      color: $danger-light-300;
+      color: $danger-300;
     }
   }
 
@@ -206,7 +206,7 @@
     color: $warning;
 
     &:hover {
-      color: $warning-light-300;
+      color: $warning-300;
     }
   }
 
@@ -214,7 +214,7 @@
     color: $info;
 
     &:hover {
-      color: $info-light-300;
+      color: $info-300;
     }
   }
 

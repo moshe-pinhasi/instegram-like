@@ -1,8 +1,11 @@
+//Fonts
+@import 'abstracts/fonts';
+
+@import 'abstracts/functions';
 @import 'abstracts/variables';
 @import 'abstracts/mixins';
 @import 'abstracts/i18n-mixins';
 @import 'abstracts/typography';
-// @import 'abstracts/functions';
 
 // base
 @import 'base/base';

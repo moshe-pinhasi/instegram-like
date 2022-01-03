@@ -37,19 +37,19 @@
 	}
 
 	&.alert-info {
-		@include create-alert($info, $info-light-100)
+		@include create-alert($info, $info-100)
 	}
 
 	&.alert-success {
-		@include create-alert($success, $success-light-100)
+		@include create-alert($success, $success-100)
 	}
 
 	&.alert-danger {
-		@include create-alert($danger, $danger-light-100)
+		@include create-alert($danger, $danger-100)
 	}
 
 	&.alert-warning {
-		@include create-alert($warning, $warning-light-100)
+		@include create-alert($warning, $warning-100)
 	}
 
 	.has-close-btn {

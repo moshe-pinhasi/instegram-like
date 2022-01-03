@@ -1,0 +1,19 @@
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $weight - percentage of `$color` in returned color
+/// @return {Color}
+
+@function tint-color($color, $weight) {
+  @return mix(white, $color, $weight);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $weight - percentage of `$color` in returned color
+/// @return {Color}
+
+@function shade-color($color, $weight) {
+  @return mix(black, $color, $weight);
+}
